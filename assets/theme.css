@@ -1,0 +1,152 @@
+/* Overall page */
+.stApp {
+    background: radial-gradient(circle at top left, #fff7f4 0, #ffffff 40%, #f7fafc 100%);
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* Hide Streamlit default header/footer */
+header[data-testid="stHeader"] { background: transparent; }
+footer { visibility: hidden; }
+
+/* Main container width tweaks */
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    max-width: 1200px;
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #ff385c 0%, #ff8a5c 45%, #ffb37a 100%);
+    border-radius: 24px;
+    padding: 24px 28px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.15);
+    margin-bottom: 24px;
+}
+
+.hero-left {
+    flex: 2;
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.hero-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.92;
+    max-width: 520px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+}
+
+.hero-right {
+    flex: 1.2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+/* Card shell */
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px 18px 14px 18px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.card-light {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 14px 16px 10px 16px;
+    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #0f172a;
+}
+
+/* Selectbox styling */
+.pill-select-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.35rem;
+}
+
+div[data-baseweb="select"] > div {
+    border-radius: 999px !important;
+    border: 1px solid rgba(148, 163, 184, 0.8) !important;
+    box-shadow: none !important;
+    background: #ffffff;
+    min-height: 38px;
+}
+
+div[data-baseweb="select"] input {
+    font-size: 0.9rem !important;
+}
+
+/* Section headings */
+.section-header {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0.4rem 0 0.2rem 0;
+    color: #0f172a;
+}
+
+.section-sub {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.6rem;
+}
+
+/* Commentary bullets */
+.comment-list li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Dataframe container */
+.dataframe-wrap {
+    margin-top: 0.2rem;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Commentary bullets */
+.comment-list li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Better spacing for commentary list inside card */
+.card-light .comment-list {
+    margin: 0.35rem 0 0 0;      /* top margin inside card */
+    padding-left: 1.15rem;      /* indent bullets nicely */
+}
+
+.card-light .comment-list li {
+    margin-bottom: 0.35rem;     /* more breathing room per line */
+}

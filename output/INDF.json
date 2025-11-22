@@ -1,0 +1,536 @@
+{
+  "meta": {
+    "company": "PT Indofood Sukses Makmur Tbk and its subsidiaries",
+    "period_label": "9M2025 vs 9M2024",
+    "currency": "IDR",
+    "unit": "million",
+    "source_type": "pdf",
+    "source_notes": "Interim consolidated financial statements, unaudited",
+    "version": "sankey-v1.1",
+    "validation": {
+      "rev_breakdown_basis": "segment",
+      "rev_breakdown_sum": 90981090,
+      "rev_total": 90981090,
+      "rev_breakdown_tolerance": 0.005,
+      "rev_breakdown_ok": true,
+      "cogs_sub_sum": -60720121,
+      "cogs_total": -60720121,
+      "cogs_tolerance": 0.01,
+      "cogs_reconciles": true,
+      "opex_parts_sum": -12163261,
+      "opex_total": -12163261,
+      "opex_tolerance": 0.01,
+      "opex_reconciles": true
+    }
+  },
+  "table": [
+    {
+      "anchor": "REV_TOTAL",
+      "hierarchy": [
+        "Revenue",
+        "",
+        ""
+      ],
+      "display_name": "Net sales",
+      "description": "Consolidated net sales",
+      "current": 90981090,
+      "previous": 86943780,
+      "delta_yoy": 4037310,
+      "growth_pct": 4.646,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Statement of profit or loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Consumer Branded Products",
+      "description": "External sales by segment",
+      "current": 56149300,
+      "previous": 55294993,
+      "delta_yoy": 854307,
+      "growth_pct": 1.545,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 127,
+        "note": "Segment information - external customers"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Bogasari",
+      "description": "External sales by segment",
+      "current": 17963147,
+      "previous": 17877932,
+      "delta_yoy": 85215,
+      "growth_pct": 0.477,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 127,
+        "note": "Segment information - external customers"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Agribusiness",
+      "description": "External sales by segment",
+      "current": 11292651,
+      "previous": 8469779,
+      "delta_yoy": 2822872,
+      "growth_pct": 33.33,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 127,
+        "note": "Segment information - external customers"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Distribution",
+      "description": "External sales by segment",
+      "current": 5575992,
+      "previous": 5301076,
+      "delta_yoy": 274916,
+      "growth_pct": 5.19,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 127,
+        "note": "Segment information - external customers"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_TOTAL",
+      "hierarchy": [
+        "COGS",
+        "",
+        ""
+      ],
+      "display_name": "Cost of goods sold",
+      "description": "Consolidated COGS",
+      "current": -60720121,
+      "previous": -57249947,
+      "delta_yoy": -3470174,
+      "growth_pct": 6.061,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Statement of profit or loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Raw & packaging materials used"
+      ],
+      "display_name": "Raw & packaging materials used",
+      "description": "Note 27",
+      "current": -43084068,
+      "previous": -40940068,
+      "delta_yoy": -2144000,
+      "growth_pct": 5.24,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 106,
+        "note": "Note 27 - Cost of goods sold"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Production expenses"
+      ],
+      "display_name": "Production expenses",
+      "description": "Note 27",
+      "current": -15591428,
+      "previous": -14692060,
+      "delta_yoy": -899368,
+      "growth_pct": 6.12,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 106,
+        "note": "Note 27 - Cost of goods sold"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "WIP inventory change (begin - end)"
+      ],
+      "display_name": "Work-in-process change",
+      "description": "Begin WIP less end WIP",
+      "current": -19437,
+      "previous": 123155,
+      "delta_yoy": -142592,
+      "growth_pct": -115.74,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 106,
+        "note": "Note 27 - WIP begin and end"
+      },
+      "comments": "Positive reduces COGS; negative adds to COGS"
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods inventory - begin"
+      ],
+      "display_name": "Finished goods begin",
+      "description": "Adds to COGS",
+      "current": -6066994,
+      "previous": -4867607,
+      "delta_yoy": -1199387,
+      "growth_pct": 24.64,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 106,
+        "note": "Note 27 - Finished goods begin"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods purchases"
+      ],
+      "display_name": "Purchases of finished goods",
+      "description": "Adds to COGS",
+      "current": -3356663,
+      "previous": -3433902,
+      "delta_yoy": 77239,
+      "growth_pct": -2.25,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 106,
+        "note": "Note 27 - Purchases"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods inventory - end"
+      ],
+      "display_name": "Finished goods end",
+      "description": "Reduces COGS",
+      "current": 7398469,
+      "previous": 6560535,
+      "delta_yoy": 837934,
+      "growth_pct": 12.77,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 106,
+        "note": "Note 27 - Finished goods end"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "GP_TOTAL",
+      "hierarchy": [
+        "Gross profit",
+        "",
+        ""
+      ],
+      "display_name": "Gross profit",
+      "description": "Revenue minus COGS",
+      "current": 30260969,
+      "previous": 29693833,
+      "delta_yoy": 567136,
+      "growth_pct": 1.91,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Statement of profit or loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_TOTAL",
+      "hierarchy": [
+        "Operating expenses",
+        "",
+        ""
+      ],
+      "display_name": "Operating expenses (net of other operating and FV items)",
+      "description": "Selling, G&A, plus net other operating items incl. FV of biological assets",
+      "current": -12163261,
+      "previous": -13600177,
+      "delta_yoy": 1436916,
+      "growth_pct": -10.56,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Operating lines incl. other operating and FV"
+      },
+      "comments": "Sum of Selling, G&A, net other operating income/expense and FV biological assets"
+    },
+    {
+      "anchor": "OPEX_SELLING",
+      "hierarchy": [
+        "Operating expenses",
+        "Selling",
+        ""
+      ],
+      "display_name": "Selling & distribution",
+      "description": "",
+      "current": -9348140,
+      "previous": -9308671,
+      "delta_yoy": -39469,
+      "growth_pct": 0.424,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Selling and distribution expenses"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_GA",
+      "hierarchy": [
+        "Operating expenses",
+        "G&A",
+        ""
+      ],
+      "display_name": "General & administrative",
+      "description": "",
+      "current": -3880396,
+      "previous": -4113150,
+      "delta_yoy": 232754,
+      "growth_pct": -5.66,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "General and administrative expenses"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_OTHER",
+      "hierarchy": [
+        "Operating expenses",
+        "Other",
+        ""
+      ],
+      "display_name": "Net other operating items & FV biological assets",
+      "description": "Other operating income/expense net plus FV change of biological assets",
+      "current": 1065275,
+      "previous": -178356,
+      "delta_yoy": 1243631,
+      "growth_pct": -697.0,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "FV biological assets, other operating income/expenses"
+      },
+      "comments": "Positive figure indicates net operating income"
+    },
+    {
+      "anchor": "EBIT_TOTAL",
+      "hierarchy": [
+        "EBIT",
+        "",
+        ""
+      ],
+      "display_name": "Income from operations (EBIT)",
+      "description": "Gross profit plus operating expense block",
+      "current": 18097708,
+      "previous": 16093656,
+      "delta_yoy": 2004052,
+      "growth_pct": 12.46,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income from operations"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance income",
+        ""
+      ],
+      "display_name": "Finance income",
+      "description": "",
+      "current": 1323438,
+      "previous": 2586805,
+      "delta_yoy": -1263367,
+      "growth_pct": -48.84,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Finance income"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_EXPENSE",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance expenses",
+        ""
+      ],
+      "display_name": "Finance expenses",
+      "description": "",
+      "current": -4550531,
+      "previous": -2790470,
+      "delta_yoy": -1760061,
+      "growth_pct": 63.1,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Finance expenses"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "NON_OP_OTHER",
+      "hierarchy": [
+        "Below EBIT",
+        "Other",
+        ""
+      ],
+      "display_name": "Final tax on interest income",
+      "description": "Classified as other below EBIT",
+      "current": -190801,
+      "previous": -201336,
+      "delta_yoy": 10535,
+      "growth_pct": -5.23,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Final tax on interest income"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "ASSOCIATE_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Associates/JV",
+        ""
+      ],
+      "display_name": "Share of profit of associates & JVs",
+      "description": "",
+      "current": 18528,
+      "previous": 158524,
+      "delta_yoy": -139996,
+      "growth_pct": -88.3,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Share in net gains of associates and joint ventures"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "PBT_TOTAL",
+      "hierarchy": [
+        "PBT",
+        "",
+        ""
+      ],
+      "display_name": "Income before income tax",
+      "description": "EBIT plus finance & other items",
+      "current": 14698342,
+      "previous": 15847179,
+      "delta_yoy": -1148837,
+      "growth_pct": -7.25,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income before income tax expense"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "TAX_EXPENSE",
+      "hierarchy": [
+        "Tax",
+        "",
+        ""
+      ],
+      "display_name": "Income tax expense",
+      "description": "",
+      "current": -3330063,
+      "previous": -3562183,
+      "delta_yoy": 232120,
+      "growth_pct": -6.52,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income tax expense"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "NET_PROFIT_TOTAL",
+      "hierarchy": [
+        "Net profit",
+        "",
+        ""
+      ],
+      "display_name": "Profit for the period",
+      "description": "Net income",
+      "current": 11368279,
+      "previous": 12284996,
+      "delta_yoy": -916717,
+      "growth_pct": -7.47,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income for the period"
+      },
+      "comments": ""
+    }
+  ],
+  "summary": [
+    "Revenue up 4.6% to IDR 90.98tn, led by Agribusiness (+33%), with CBP and Bogasari broadly flat.",
+    "COGS rose 6.1% on higher raw materials and opening inventory, trimming gross margin to 33.3% (from 34.2%).",
+    "Selling expenses were flat; G&A fell 5.7%. Net other operating items and FV gains/losses added IDR 1.07tn, lifting EBIT 12.5% to IDR 18.10tn.",
+    "Finance costs surged 63% to IDR 4.55tn while finance income fell 49%, pulling PBT down 7.3% to IDR 14.70tn.",
+    "Final tax on interest was IDR 191bn and share of associates/JVs slipped to IDR 19bn from IDR 159bn.",
+    "Income tax expense declined 6.5% to IDR 3.33tn; net profit decreased 7.5% to IDR 11.37tn."
+  ]
+}

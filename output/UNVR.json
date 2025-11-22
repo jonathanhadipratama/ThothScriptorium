@@ -1,0 +1,536 @@
+{
+  "meta": {
+    "company": "PT Unilever Indonesia Tbk",
+    "period_label": "9M2025 vs 9M2024",
+    "currency": "IDR",
+    "unit": "million",
+    "source_type": "pdf",
+    "source_notes": "Interim financial statements, unaudited",
+    "version": "sankey-v1.1",
+    "validation": {
+      "rev_breakdown_basis": "segment",
+      "rev_breakdown_sum": 27613255,
+      "rev_total": 27613255,
+      "rev_breakdown_tolerance": 0.005,
+      "rev_breakdown_ok": true,
+      "cogs_sub_sum": -14227345,
+      "cogs_total": -14227345,
+      "cogs_tolerance": 0.01,
+      "cogs_reconciles": true,
+      "opex_parts_sum": -8931200,
+      "opex_total": -8931200,
+      "opex_tolerance": 0.01,
+      "opex_reconciles": true
+    }
+  },
+  "table": [
+    {
+      "anchor": "REV_TOTAL",
+      "hierarchy": [
+        "Revenue",
+        "",
+        ""
+      ],
+      "display_name": "Net sales",
+      "description": "Total revenue for the period",
+      "current": 27613255,
+      "previous": 27417352,
+      "delta_yoy": 195903,
+      "growth_pct": 0.714,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Home & Personal Care",
+      "description": "Segment revenue",
+      "current": 17529573,
+      "previous": 17593427,
+      "delta_yoy": -63854,
+      "growth_pct": -0.363,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 62,
+        "note": "Segment information - net sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Foods & Refreshment",
+      "description": "Segment revenue",
+      "current": 10083682,
+      "previous": 9823925,
+      "delta_yoy": 259757,
+      "growth_pct": 2.645,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 62,
+        "note": "Segment information - net sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_TOTAL",
+      "hierarchy": [
+        "COGS",
+        "",
+        ""
+      ],
+      "display_name": "Cost of goods sold",
+      "description": "Total COGS",
+      "current": -14227345,
+      "previous": -14136555,
+      "delta_yoy": -90790,
+      "growth_pct": 0.642,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Raw materials used"
+      ],
+      "display_name": "Raw materials used",
+      "description": "After inventory movement",
+      "current": -10515503,
+      "previous": -10006148,
+      "delta_yoy": -509355,
+      "growth_pct": 5.09,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Direct labour"
+      ],
+      "display_name": "Direct labour",
+      "description": "Factory wages",
+      "current": -466380,
+      "previous": -526765,
+      "delta_yoy": 60385,
+      "growth_pct": -11.47,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Long-term employee benefits (COGS)"
+      ],
+      "display_name": "Long-term employee benefits (COGS)",
+      "description": "Benefits allocated to production",
+      "current": -79087,
+      "previous": -51971,
+      "delta_yoy": -27116,
+      "growth_pct": 52.18,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Depreciation of fixed assets"
+      ],
+      "display_name": "Depreciation (fixed assets)",
+      "description": "Production-related depreciation",
+      "current": -398386,
+      "previous": -397708,
+      "delta_yoy": -678,
+      "growth_pct": 0.171,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25 / Note 9f"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Depreciation of right-of-use assets"
+      ],
+      "display_name": "Depreciation (right-of-use assets)",
+      "description": "Production leases depreciation",
+      "current": -14757,
+      "previous": -15230,
+      "delta_yoy": 473,
+      "growth_pct": -3.11,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Other manufacturing overheads"
+      ],
+      "display_name": "Other manufacturing overheads",
+      "description": "Utilities, factory costs, etc.",
+      "current": -1069716,
+      "previous": -1334585,
+      "delta_yoy": 264869,
+      "growth_pct": -19.84,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Change in work-in-process"
+      ],
+      "display_name": "Change in work-in-process inventory",
+      "description": "Opening less closing WIP",
+      "current": 5974,
+      "previous": 17800,
+      "delta_yoy": -11826,
+      "growth_pct": -66.43,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": "Positive means reduction to COGS"
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods - opening"
+      ],
+      "display_name": "Finished goods - opening inventory",
+      "description": "Beginning finished goods",
+      "current": -1483268,
+      "previous": -1575410,
+      "delta_yoy": 92142,
+      "growth_pct": -5.85,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods purchases"
+      ],
+      "display_name": "Purchases of finished goods",
+      "description": "Third-party finished goods purchases",
+      "current": -1757736,
+      "previous": -1768032,
+      "delta_yoy": 10296,
+      "growth_pct": -0.583,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods - closing"
+      ],
+      "display_name": "Finished goods - closing inventory",
+      "description": "Ending finished goods",
+      "current": 1551514,
+      "previous": 1521494,
+      "delta_yoy": 30020,
+      "growth_pct": 1.974,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 64,
+        "note": "Note 25"
+      },
+      "comments": "Positive reduces COGS"
+    },
+    {
+      "anchor": "GP_TOTAL",
+      "hierarchy": [
+        "Gross profit",
+        "",
+        ""
+      ],
+      "display_name": "Gross profit",
+      "description": "Revenue minus COGS",
+      "current": 13385910,
+      "previous": 13280797,
+      "delta_yoy": 105113,
+      "growth_pct": 0.792,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_TOTAL",
+      "hierarchy": [
+        "Operating expenses",
+        "",
+        ""
+      ],
+      "display_name": "Total operating expenses",
+      "description": "Selling, G&A and other operating items",
+      "current": -8931200,
+      "previous": -9367463,
+      "delta_yoy": 436263,
+      "growth_pct": -4.66,
+      "is_inferred": true,
+      "source_ref": {
+        "page": 2,
+        "note": "Derived from components / P&L"
+      },
+      "comments": "Sum of selling, G&A and other operating expenses"
+    },
+    {
+      "anchor": "OPEX_SELLING",
+      "hierarchy": [
+        "Operating expenses",
+        "Selling",
+        ""
+      ],
+      "display_name": "Marketing and selling expenses",
+      "description": "Sales, distribution, advertising and promotion",
+      "current": -6454888,
+      "previous": -6876620,
+      "delta_yoy": 421732,
+      "growth_pct": -6.13,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_GA",
+      "hierarchy": [
+        "Operating expenses",
+        "G&A",
+        ""
+      ],
+      "display_name": "General and administration expenses",
+      "description": "Administrative overheads incl. royalties and services",
+      "current": -2472963,
+      "previous": -2484184,
+      "delta_yoy": 11221,
+      "growth_pct": -0.452,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_OTHER",
+      "hierarchy": [
+        "Operating expenses",
+        "Other",
+        ""
+      ],
+      "display_name": "Other expense, net (operating)",
+      "description": "Other operating income/expense, net",
+      "current": -3349,
+      "previous": -6659,
+      "delta_yoy": 3310,
+      "growth_pct": -49.73,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": "Presented above operating profit in P&L"
+    },
+    {
+      "anchor": "EBIT_TOTAL",
+      "hierarchy": [
+        "EBIT",
+        "",
+        ""
+      ],
+      "display_name": "Operating profit (EBIT)",
+      "description": "Gross profit minus operating expenses",
+      "current": 4454710,
+      "previous": 3913334,
+      "delta_yoy": 541376,
+      "growth_pct": 13.84,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance income",
+        ""
+      ],
+      "display_name": "Finance income",
+      "description": "Interest and other finance income",
+      "current": 7079,
+      "previous": 16047,
+      "delta_yoy": -8968,
+      "growth_pct": -55.88,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_EXPENSE",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance costs",
+        ""
+      ],
+      "display_name": "Finance costs",
+      "description": "Interest and other finance costs",
+      "current": -113390,
+      "previous": -65186,
+      "delta_yoy": -48204,
+      "growth_pct": 73.97,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "PBT_TOTAL",
+      "hierarchy": [
+        "PBT",
+        "",
+        ""
+      ],
+      "display_name": "Profit before income tax",
+      "description": "EBIT plus net finance and other below-EBIT items",
+      "current": 4348399,
+      "previous": 3864195,
+      "delta_yoy": 484204,
+      "growth_pct": 12.53,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "TAX_EXPENSE",
+      "hierarchy": [
+        "Tax",
+        "",
+        ""
+      ],
+      "display_name": "Income tax expense",
+      "description": "Current and deferred tax expense",
+      "current": -1013150,
+      "previous": -854497,
+      "delta_yoy": -158653,
+      "growth_pct": 18.57,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "NET_PROFIT_TOTAL",
+      "hierarchy": [
+        "Net profit",
+        "",
+        ""
+      ],
+      "display_name": "Profit for the period",
+      "description": "Net profit after tax",
+      "current": 3335249,
+      "previous": 3009698,
+      "delta_yoy": 325551,
+      "growth_pct": 10.81,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Interim Statement of Profit or Loss"
+      },
+      "comments": ""
+    }
+  ],
+  "summary": [
+    "Net sales rose 0.7% to IDR 27,613,255m. Home & Personal Care was flat, while Foods & Refreshment grew 2.6%.",
+    "COGS increased 0.6%; raw materials rose 5.1% but other factory overheads fell ~19.8%. Gross margin stayed ~48.4%.",
+    "Operating expenses declined 4.7% driven by lower marketing and selling spend; other operating expense also eased.",
+    "EBIT improved 13.8% to IDR 4,454,710m on slightly higher sales and lower opex.",
+    "Finance costs jumped 74% and finance income fell 56%, but PBT still advanced 12.5%.",
+    "Tax expense increased 18.6%; effective rate ~23.3% (vs ~22.1% last year). Net profit up 10.8% to IDR 3,335,249m."
+  ]
+}

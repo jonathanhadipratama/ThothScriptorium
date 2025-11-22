@@ -1,0 +1,597 @@
+{
+  "meta": {
+    "company": "PT Mulia Boga Raya Tbk",
+    "period_label": "9M2025 vs 9M2024",
+    "currency": "IDR",
+    "unit": "million",
+    "source_type": "pdf",
+    "source_notes": "Standalone interim financial statements: 9M2025 unaudited; 2024 audited",
+    "version": "sankey-v1.1",
+    "validation": {
+      "rev_breakdown_basis": "segment",
+      "rev_breakdown_sum": 1088770.621179,
+      "rev_total": 1088770.621179,
+      "rev_breakdown_tolerance": 0.005,
+      "rev_breakdown_ok": true,
+      "cogs_sub_sum": -752226.702799,
+      "cogs_total": -752226.702799,
+      "cogs_tolerance": 0.01,
+      "cogs_reconciles": true,
+      "opex_parts_sum": -162161.415984,
+      "opex_total": -162161.415984,
+      "opex_tolerance": 0.01,
+      "opex_reconciles": true
+    }
+  },
+  "table": [
+    {
+      "anchor": "REV_TOTAL",
+      "hierarchy": [
+        "Revenue",
+        "",
+        ""
+      ],
+      "display_name": "Net sales",
+      "description": "Total revenue for the period",
+      "current": 1088770.621179,
+      "previous": 939185.108049,
+      "delta_yoy": 149585.51313,
+      "growth_pct": 15.92,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Net sales increased y/y"
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Block cheese",
+      "description": "Revenue from block cheese",
+      "current": 861471.945663,
+      "previous": 719370.946748,
+      "delta_yoy": 142100.998915,
+      "growth_pct": 19.76,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 51,
+        "note": "Segment information"
+      },
+      "comments": "Primary revenue driver"
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Sliced cheese",
+      "description": "Revenue from sliced cheese",
+      "current": 215132.254468,
+      "previous": 206499.79331,
+      "delta_yoy": 8632.461158,
+      "growth_pct": 4.18,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 51,
+        "note": "Segment information"
+      },
+      "comments": "Moderate growth"
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Others",
+      "description": "Revenue from other products",
+      "current": 12166.421048,
+      "previous": 13314.367991,
+      "delta_yoy": -1147.946943,
+      "growth_pct": -8.62,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 51,
+        "note": "Segment information"
+      },
+      "comments": "Minor decline"
+    },
+    {
+      "anchor": "COGS_TOTAL",
+      "hierarchy": [
+        "COGS",
+        "",
+        ""
+      ],
+      "display_name": "Cost of sales",
+      "description": "Total cost of goods sold",
+      "current": -752226.702799,
+      "previous": -660904.084586,
+      "delta_yoy": -91322.618213,
+      "growth_pct": 13.82,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Includes raw materials, labor, overhead, inventory changes"
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Raw materials used"
+      ],
+      "display_name": "Raw materials used",
+      "description": "Direct materials consumed",
+      "current": -649186.338314,
+      "previous": -566482.447797,
+      "delta_yoy": -82703.890517,
+      "growth_pct": 14.6,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19 - Cost of sales details"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Direct labour"
+      ],
+      "display_name": "Direct labour",
+      "description": "Factory direct labour",
+      "current": -36075.507527,
+      "previous": -34373.426069,
+      "delta_yoy": -1702.081458,
+      "growth_pct": 4.95,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Depreciation"
+      ],
+      "display_name": "Depreciation (factory)",
+      "description": "Depreciation included in COGS",
+      "current": -18148.430689,
+      "previous": -19279.992254,
+      "delta_yoy": 1131.561565,
+      "growth_pct": -5.87,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": "Lower y/y"
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Utilities"
+      ],
+      "display_name": "Utilities",
+      "description": "Energy and utilities",
+      "current": -13607.374065,
+      "previous": -11927.544637,
+      "delta_yoy": -1679.829428,
+      "growth_pct": 14.08,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Repair & maintenance"
+      ],
+      "display_name": "Repairs and maintenance",
+      "description": "Factory repairs and maintenance",
+      "current": -10970.060813,
+      "previous": -7512.252493,
+      "delta_yoy": -3457.80832,
+      "growth_pct": 46.03,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": "Higher upkeep costs"
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Indirect labour"
+      ],
+      "display_name": "Indirect labour",
+      "description": "Factory indirect labour and benefits",
+      "current": -7863.650329,
+      "previous": -7925.281923,
+      "delta_yoy": 61.631594,
+      "growth_pct": -0.78,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Professional fees"
+      ],
+      "display_name": "Professional fees (factory)",
+      "description": "Factory-related services",
+      "current": -3761.978139,
+      "previous": -3897.393419,
+      "delta_yoy": 135.41528,
+      "growth_pct": -3.48,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "General supplies"
+      ],
+      "display_name": "General supplies",
+      "description": "Factory general supplies",
+      "current": -3476.213375,
+      "previous": -4386.158672,
+      "delta_yoy": 909.945297,
+      "growth_pct": -20.75,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Canteen"
+      ],
+      "display_name": "Canteen",
+      "description": "Employee canteen costs",
+      "current": -1482.664,
+      "previous": -1065.26,
+      "delta_yoy": -417.404,
+      "growth_pct": 39.17,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Other overhead"
+      ],
+      "display_name": "Other factory overhead",
+      "description": "Other manufacturing overheads",
+      "current": -6840.758019,
+      "previous": -5305.362967,
+      "delta_yoy": -1535.395052,
+      "growth_pct": 28.93,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods - opening"
+      ],
+      "display_name": "Finished goods - opening",
+      "description": "Opening inventory added to COGS",
+      "current": -68532.212239,
+      "previous": -65642.484487,
+      "delta_yoy": -2889.727752,
+      "growth_pct": 4.4,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19 (Beginning balance)"
+      },
+      "comments": "Sign convention: expense negative"
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods - closing"
+      ],
+      "display_name": "Finished goods - closing",
+      "description": "Closing inventory deducted from COGS",
+      "current": 67718.48471,
+      "previous": 66893.520132,
+      "delta_yoy": 824.964578,
+      "growth_pct": 1.23,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 49,
+        "note": "Note 19 (Ending balance)"
+      },
+      "comments": "Sign convention: deduction positive"
+    },
+    {
+      "anchor": "GP_TOTAL",
+      "hierarchy": [
+        "Gross profit",
+        "",
+        ""
+      ],
+      "display_name": "Gross profit",
+      "description": "Revenue minus cost of sales",
+      "current": 336543.91838,
+      "previous": 278281.023463,
+      "delta_yoy": 58262.894917,
+      "growth_pct": 20.94,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Gross margin expansion"
+    },
+    {
+      "anchor": "OPEX_TOTAL",
+      "hierarchy": [
+        "Operating expenses",
+        "",
+        ""
+      ],
+      "display_name": "Total operating expenses",
+      "description": "Selling and G&A expenses",
+      "current": -162161.415984,
+      "previous": -138570.263534,
+      "delta_yoy": -23591.15245,
+      "growth_pct": 17.02,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Sum of selling and G&A"
+    },
+    {
+      "anchor": "OPEX_SELLING",
+      "hierarchy": [
+        "Operating expenses",
+        "Selling",
+        ""
+      ],
+      "display_name": "Selling expenses",
+      "description": "Distribution, advertising and selling costs",
+      "current": -89227.84286,
+      "previous": -83686.942937,
+      "delta_yoy": -5540.899923,
+      "growth_pct": 6.62,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_GA",
+      "hierarchy": [
+        "Operating expenses",
+        "G&A",
+        ""
+      ],
+      "display_name": "General and administrative expenses",
+      "description": "Head office and admin costs",
+      "current": -72933.573124,
+      "previous": -54883.320597,
+      "delta_yoy": -18050.252527,
+      "growth_pct": 32.9,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Higher professional fees and staff costs"
+    },
+    {
+      "anchor": "EBIT_TOTAL",
+      "hierarchy": [
+        "EBIT",
+        "",
+        ""
+      ],
+      "display_name": "EBIT",
+      "description": "Earnings before interest and tax",
+      "current": 174382.502396,
+      "previous": 139710.759929,
+      "delta_yoy": 34671.742467,
+      "growth_pct": 24.81,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Derived: GP minus Opex"
+      },
+      "comments": "Also reconciles via PBT minus finance and other"
+    },
+    {
+      "anchor": "FIN_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance income",
+        ""
+      ],
+      "display_name": "Finance income",
+      "description": "Interest income and similar",
+      "current": 12249.37546,
+      "previous": 6027.371707,
+      "delta_yoy": 6222.003753,
+      "growth_pct": 103.17,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Higher cash yields"
+    },
+    {
+      "anchor": "FIN_EXPENSE",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance costs",
+        ""
+      ],
+      "display_name": "Finance costs",
+      "description": "Interest and related costs",
+      "current": -277.942276,
+      "previous": -143.439135,
+      "delta_yoy": -134.503141,
+      "growth_pct": 93.81,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Low leverage; small expense"
+    },
+    {
+      "anchor": "NON_OP_OTHER",
+      "hierarchy": [
+        "Below EBIT",
+        "Other (net)",
+        ""
+      ],
+      "display_name": "Other income/(expenses), net",
+      "description": "Net other income and expenses below EBIT",
+      "current": 473.71673,
+      "previous": -2206.398646,
+      "delta_yoy": 2680.115376,
+      "growth_pct": -121.46,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss (other income/expenses)"
+      },
+      "comments": "Swing to small net other income"
+    },
+    {
+      "anchor": "PBT_TOTAL",
+      "hierarchy": [
+        "PBT",
+        "",
+        ""
+      ],
+      "display_name": "Profit before income tax",
+      "description": "PBT",
+      "current": 186827.65231,
+      "previous": 143388.293855,
+      "delta_yoy": 43439.358455,
+      "growth_pct": 30.29,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Reconciles: EBIT + finance + other"
+    },
+    {
+      "anchor": "TAX_EXPENSE",
+      "hierarchy": [
+        "Tax",
+        "",
+        ""
+      ],
+      "display_name": "Income tax expense",
+      "description": "Current and deferred tax expense",
+      "current": -38954.187628,
+      "previous": -29867.636277,
+      "delta_yoy": -9086.551351,
+      "growth_pct": 30.42,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "ETR ~20.9%"
+    },
+    {
+      "anchor": "NET_PROFIT_TOTAL",
+      "hierarchy": [
+        "Net profit",
+        "",
+        ""
+      ],
+      "display_name": "Profit for the period",
+      "description": "Net profit after tax",
+      "current": 147873.464682,
+      "previous": 113520.657578,
+      "delta_yoy": 34352.807104,
+      "growth_pct": 30.26,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 2,
+        "note": "Statement of profit or loss"
+      },
+      "comments": "Strong y/y growth"
+    }
+  ],
+  "summary": [
+    "Revenue grew 15.9% to IDR 1,088,771m, driven by block cheese (+19.8%); sliced cheese rose 4.2%.",
+    "Gross profit up 20.9%, with margin expanding to 30.9% (from 29.6%) on improved mix and scale.",
+    "COGS +13.8% mainly from raw materials (+14.6%), utilities and repairs; factory depreciation declined.",
+    "Opex +17.0% as G&A rose 32.9% and selling +6.6%, but EBIT still climbed 24.8% to IDR 174,383m.",
+    "Finance income doubled on higher yields; net other swung to income, boosting PBT by 30.3%.",
+    "Tax expense +30.4%; effective tax rate stable around 20.9%.",
+    "Net profit rose 30.3% to IDR 147,873m on stronger sales, margin gains, and higher finance income."
+  ]
+}

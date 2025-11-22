@@ -1,0 +1,576 @@
+{
+  "meta": {
+    "company": "PT Indofood CBP Sukses Makmur Tbk and its Subsidiaries",
+    "period_label": "9M2025 vs 9M2024",
+    "currency": "IDR",
+    "unit": "million",
+    "source_type": "pdf",
+    "source_notes": "Interim consolidated financial statements (unaudited); expressed in millions of Rupiah",
+    "version": "sankey-v1.1",
+    "validation": {
+      "rev_breakdown_basis": "segment",
+      "rev_breakdown_sum": 56266782,
+      "rev_total": 56266782,
+      "rev_breakdown_tolerance": 0.005,
+      "rev_breakdown_ok": true,
+      "cogs_sub_sum": -36362243,
+      "cogs_total": -36362243,
+      "cogs_tolerance": 0.01,
+      "cogs_reconciles": true,
+      "opex_parts_sum": -7161783,
+      "opex_total": -7161783,
+      "opex_tolerance": 0.01,
+      "opex_reconciles": true
+    }
+  },
+  "table": [
+    {
+      "anchor": "REV_TOTAL",
+      "hierarchy": [
+        "Revenue",
+        "",
+        ""
+      ],
+      "display_name": "Net sales",
+      "description": "Consolidated net sales for the nine-month period",
+      "current": 56266782,
+      "previous": 55486221,
+      "delta_yoy": 780561,
+      "growth_pct": 1.406,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Interim Consolidated Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Noodles",
+      "description": "External sales - Noodles division",
+      "current": 40925696,
+      "previous": 40260637,
+      "delta_yoy": 665059,
+      "growth_pct": 1.65,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 84,
+        "note": "Segment information - external sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Dairy",
+      "description": "External sales - Dairy division",
+      "current": 7173278,
+      "previous": 7069646,
+      "delta_yoy": 103632,
+      "growth_pct": 1.47,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 84,
+        "note": "Segment information - external sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Snack Foods",
+      "description": "External sales - Snack Foods division",
+      "current": 3379145,
+      "previous": 3337216,
+      "delta_yoy": 41929,
+      "growth_pct": 1.26,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 84,
+        "note": "Segment information - external sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Food Seasonings",
+      "description": "External sales - Food Seasonings division",
+      "current": 2736255,
+      "previous": 2523006,
+      "delta_yoy": 213249,
+      "growth_pct": 8.45,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 84,
+        "note": "Segment information - external sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Nutrition & Special Foods",
+      "description": "External sales - Nutrition and Special Foods division",
+      "current": 953080,
+      "previous": 1024952,
+      "delta_yoy": -71872,
+      "growth_pct": -7.01,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 84,
+        "note": "Segment information - external sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Beverages",
+      "description": "External sales - Beverages division",
+      "current": 1099328,
+      "previous": 1270764,
+      "delta_yoy": -171436,
+      "growth_pct": -13.49,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 84,
+        "note": "Segment information - external sales"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_TOTAL",
+      "hierarchy": [
+        "COGS",
+        "",
+        ""
+      ],
+      "display_name": "Cost of goods sold",
+      "description": "Consolidated cost of goods sold",
+      "current": -36362243,
+      "previous": -34842387,
+      "delta_yoy": -1519856,
+      "growth_pct": -4.36,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "Note 25 - Cost of Goods Sold"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Raw materials used"
+      ],
+      "display_name": "Raw materials used",
+      "description": "Note 25",
+      "current": -28849810,
+      "previous": -28340688,
+      "delta_yoy": -509122,
+      "growth_pct": -1.8,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "Raw materials used"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Production expenses"
+      ],
+      "display_name": "Production expenses",
+      "description": "Manufacturing overhead and other production costs",
+      "current": -7037917,
+      "previous": -6878649,
+      "delta_yoy": -159268,
+      "growth_pct": -2.316,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "Production expenses"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "WIP inventory - beginning"
+      ],
+      "display_name": "Work-in-process inventory (beginning)",
+      "description": "Added to compute cost of goods manufactured",
+      "current": -300884,
+      "previous": -194553,
+      "delta_yoy": -106331,
+      "growth_pct": -54.65,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "WIP inventory"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "WIP inventory - ending"
+      ],
+      "display_name": "Work-in-process inventory (ending)",
+      "description": "Deducted from cost of goods manufactured",
+      "current": 281068,
+      "previous": 314654,
+      "delta_yoy": -33586,
+      "growth_pct": -10.68,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "WIP inventory"
+      },
+      "comments": "Positive here reduces COGS (ending WIP)."
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods inventory - beginning"
+      ],
+      "display_name": "Finished goods inventory (beginning)",
+      "description": "Added to compute COGS",
+      "current": -2162858,
+      "previous": -1903992,
+      "delta_yoy": -258866,
+      "growth_pct": -13.6,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "Finished goods inventory"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Finished goods inventory - ending"
+      ],
+      "display_name": "Finished goods inventory (ending)",
+      "description": "Deducted from COGS",
+      "current": 1708158,
+      "previous": 2160841,
+      "delta_yoy": -452683,
+      "growth_pct": -20.95,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 80,
+        "note": "Finished goods inventory"
+      },
+      "comments": "Positive here reduces COGS (ending FG)."
+    },
+    {
+      "anchor": "GP_TOTAL",
+      "hierarchy": [
+        "Gross profit",
+        "",
+        ""
+      ],
+      "display_name": "Gross profit",
+      "description": "Revenue minus cost of goods sold",
+      "current": 19904539,
+      "previous": 20643834,
+      "delta_yoy": -739295,
+      "growth_pct": -3.58,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Gross profit"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_TOTAL",
+      "hierarchy": [
+        "Operating expenses",
+        "",
+        ""
+      ],
+      "display_name": "Operating expenses (net other op included)",
+      "description": "Selling + G&A + other operating (income/expense) net",
+      "current": -7161783,
+      "previous": -8648202,
+      "delta_yoy": 1486419,
+      "growth_pct": 17.18,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Selling, G&A, other operating income/expenses"
+      },
+      "comments": "Other operating income netted with other operating expenses to reconcile to EBIT."
+    },
+    {
+      "anchor": "OPEX_SELLING",
+      "hierarchy": [
+        "Operating expenses",
+        "Selling",
+        ""
+      ],
+      "display_name": "Selling and distribution expenses",
+      "description": "Marketing, freight, royalties, rental, etc.",
+      "current": -5884817,
+      "previous": -6039156,
+      "delta_yoy": 154339,
+      "growth_pct": 2.56,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Selling and distribution expenses"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_GA",
+      "hierarchy": [
+        "Operating expenses",
+        "G&A",
+        ""
+      ],
+      "display_name": "General and administrative expenses",
+      "description": "Staff costs, utilities, management fees, depreciation, etc.",
+      "current": -2076847,
+      "previous": -2199233,
+      "delta_yoy": 122386,
+      "growth_pct": 5.56,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "General and administrative expenses"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_OTHER",
+      "hierarchy": [
+        "Operating expenses",
+        "Other",
+        ""
+      ],
+      "display_name": "Other operating (net: income less expenses)",
+      "description": "Other operating income (1,081,753) net of other operating expenses (281,872)",
+      "current": 799881,
+      "previous": -409813,
+      "delta_yoy": 1209694,
+      "growth_pct": 295.2,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Other operating income and expenses"
+      },
+      "comments": "Positive means net operating income."
+    },
+    {
+      "anchor": "EBIT_TOTAL",
+      "hierarchy": [
+        "EBIT",
+        "",
+        ""
+      ],
+      "display_name": "Income from operations (EBIT)",
+      "description": "Operating profit",
+      "current": 12742756,
+      "previous": 11995632,
+      "delta_yoy": 747124,
+      "growth_pct": 6.23,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income from operations"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance income",
+        ""
+      ],
+      "display_name": "Finance income",
+      "description": "Interest and related income",
+      "current": 687938,
+      "previous": 1511116,
+      "delta_yoy": -823178,
+      "growth_pct": -54.49,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Finance income"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_EXPENSE",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance expenses",
+        ""
+      ],
+      "display_name": "Finance expenses",
+      "description": "Interest and bank charges",
+      "current": -3011235,
+      "previous": -1542394,
+      "delta_yoy": -1468841,
+      "growth_pct": -95.2,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Finance expenses"
+      },
+      "comments": "Higher interest burden vs prior period."
+    },
+    {
+      "anchor": "NON_OP_OTHER",
+      "hierarchy": [
+        "Below EBIT",
+        "Other below-EBIT",
+        ""
+      ],
+      "display_name": "Final tax on interest income",
+      "description": "Final tax deducted from interest income",
+      "current": -94754,
+      "previous": -110348,
+      "delta_yoy": 15594,
+      "growth_pct": 14.14,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Final tax on interest income"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "ASSOCIATE_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Associates/JVs",
+        ""
+      ],
+      "display_name": "Share in net income of associates and JVs",
+      "description": "Equity-accounted share of results",
+      "current": 205897,
+      "previous": 103849,
+      "delta_yoy": 102048,
+      "growth_pct": 98.27,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Share in net income of associates and JVs"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "PBT_TOTAL",
+      "hierarchy": [
+        "PBT",
+        "",
+        ""
+      ],
+      "display_name": "Income before income tax (PBT)",
+      "description": "EBIT plus finance and other items",
+      "current": 10530602,
+      "previous": 11957855,
+      "delta_yoy": -1427253,
+      "growth_pct": -11.93,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income before income tax expense"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "TAX_EXPENSE",
+      "hierarchy": [
+        "Tax",
+        "",
+        ""
+      ],
+      "display_name": "Income tax expense",
+      "description": "Current and deferred tax expense",
+      "current": -2341781,
+      "previous": -2585024,
+      "delta_yoy": 243243,
+      "growth_pct": 9.41,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income tax expense"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "NET_PROFIT_TOTAL",
+      "hierarchy": [
+        "Net profit",
+        "",
+        ""
+      ],
+      "display_name": "Profit for the period",
+      "description": "Net income after tax",
+      "current": 8188821,
+      "previous": 9372831,
+      "delta_yoy": -1184010,
+      "growth_pct": -12.63,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 4,
+        "note": "Income for the period"
+      },
+      "comments": ""
+    }
+  ],
+  "summary": [
+    "Net sales grew 1.4% to IDR 56.27tn, led by Noodles (+1.6%) and Food Seasonings (+8.5%); Beverages and Nutrition declined.",
+    "COGS rose 4.4% to IDR 36.36tn; gross margin slipped to 35.4% from 37.2% on higher input costs.",
+    "Opex improved: selling and G&A down; other operating swung to +IDR 0.80tn (vs -IDR 0.41tn), lifting EBIT 6.2% to IDR 12.74tn.",
+    "Higher finance costs (IDR 3.01tn vs 1.54tn) and lower finance income cut PBT by 11.9% to IDR 10.53tn.",
+    "Tax expense fell 9.4%, but net profit declined 12.6% to IDR 8.19tn.",
+    "Segment mix: Noodles 73% of external sales; Food Seasonings delivered strongest growth; Beverages contracted."
+  ]
+}

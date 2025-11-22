@@ -1,0 +1,637 @@
+{
+  "meta": {
+    "company": "PT Ultrajaya Milk Industry & Trading Company Tbk and Subsidiaries",
+    "period_label": "9M2025 vs 9M2024",
+    "currency": "IDR",
+    "unit": "million",
+    "source_type": "pdf",
+    "source_notes": "Consolidated financial statements, 9-month period ended 30 Sep 2025 (unaudited figures in millions of Rupiah).",
+    "version": "sankey-v1.1",
+    "validation": {
+      "rev_breakdown_basis": "segment",
+      "rev_breakdown_sum": 6237682,
+      "rev_total": 6237682,
+      "rev_breakdown_tolerance": 0.005,
+      "rev_breakdown_ok": true,
+      "cogs_sub_sum": -4180864,
+      "cogs_total": -4180864,
+      "cogs_tolerance": 0.01,
+      "cogs_reconciles": true,
+      "opex_parts_sum": -862940,
+      "opex_total": -862940,
+      "opex_tolerance": 0.01,
+      "opex_reconciles": true
+    }
+  },
+  "table": [
+    {
+      "anchor": "REV_TOTAL",
+      "hierarchy": [
+        "Revenue",
+        "",
+        ""
+      ],
+      "display_name": "Sales (Net)",
+      "description": "Consolidated net sales for the nine-month period",
+      "current": 6237682,
+      "previous": 6582915,
+      "delta_yoy": -345233,
+      "growth_pct": -5.247,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B - Consolidated Statement of Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Beverages (inferred net of eliminations)",
+      "description": "Allocated proportionally from segment note to match consolidated net revenue",
+      "current": 6193021,
+      "previous": 6529936,
+      "delta_yoy": -336915,
+      "growth_pct": -5.163,
+      "is_inferred": true,
+      "source_ref": {
+        "page": 85,
+        "note": "Exhibit E/85 - Segment Information (pre-elimination mix used for allocation)"
+      },
+      "comments": "Proportional allocation of consolidated revenue based on pre-elimination mix of Beverages vs Foods"
+    },
+    {
+      "anchor": "REV_BREAKDOWN_SEGMENT",
+      "hierarchy": [
+        "Revenue",
+        "Segments",
+        ""
+      ],
+      "display_name": "Foods (inferred net of eliminations)",
+      "description": "Allocated proportionally from segment note to match consolidated net revenue",
+      "current": 44661,
+      "previous": 52979,
+      "delta_yoy": -8318,
+      "growth_pct": -15.707,
+      "is_inferred": true,
+      "source_ref": {
+        "page": 85,
+        "note": "Exhibit E/85 - Segment Information (pre-elimination mix used for allocation)"
+      },
+      "comments": "Balance of consolidated revenue after proportional allocation"
+    },
+    {
+      "anchor": "COGS_TOTAL",
+      "hierarchy": [
+        "COGS",
+        "",
+        ""
+      ],
+      "display_name": "Cost of goods sold",
+      "description": "Total COGS",
+      "current": -4180864,
+      "previous": -4358497,
+      "delta_yoy": 177633,
+      "growth_pct": -4.074,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B - Profit or Loss"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Direct materials"
+      ],
+      "display_name": "Direct materials",
+      "description": "Pemakaian bahan langsung",
+      "current": -3604609,
+      "previous": -3788500,
+      "delta_yoy": 183891,
+      "growth_pct": -4.856,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70 - Note 28 Cost of goods sold"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Direct labor"
+      ],
+      "display_name": "Direct labor",
+      "description": "Upah langsung",
+      "current": -52614,
+      "previous": -52434,
+      "delta_yoy": -180,
+      "growth_pct": 0.343,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70 - Note 28"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Repairs and maintenance"
+      ],
+      "display_name": "Repairs and maintenance",
+      "description": "Pemeliharaan dan perbaikan",
+      "current": -89300,
+      "previous": -110897,
+      "delta_yoy": 21597,
+      "growth_pct": -19.471,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70 - Factory overhead"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Electricity and energy"
+      ],
+      "display_name": "Electricity and energy",
+      "description": "Listrik dan energi",
+      "current": -105588,
+      "previous": -109012,
+      "delta_yoy": 3424,
+      "growth_pct": -3.141,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Depreciation - fixed assets"
+      ],
+      "display_name": "Depreciation (fixed assets)",
+      "description": "Penyusutan aset tetap",
+      "current": -98483,
+      "previous": -88109,
+      "delta_yoy": -10374,
+      "growth_pct": 11.77,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Factory salaries and wages"
+      ],
+      "display_name": "Factory salaries and wages",
+      "description": "Gaji dan upah pabrik",
+      "current": -49594,
+      "previous": -48187,
+      "delta_yoy": -1407,
+      "growth_pct": 2.92,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Indirect materials"
+      ],
+      "display_name": "Indirect materials",
+      "description": "Pemakaian bahan pembantu",
+      "current": -34574,
+      "previous": -38389,
+      "delta_yoy": 3815,
+      "growth_pct": -9.946,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Spare parts consumed"
+      ],
+      "display_name": "Spare parts consumed",
+      "description": "Pemakaian suku cadang",
+      "current": -20948,
+      "previous": -30645,
+      "delta_yoy": 9697,
+      "growth_pct": -31.66,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Factory supplies & others"
+      ],
+      "display_name": "Factory supplies",
+      "description": "Keperluan pabrik",
+      "current": -19239,
+      "previous": -20056,
+      "delta_yoy": 817,
+      "growth_pct": -4.075,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "ROU asset amortization"
+      ],
+      "display_name": "Right-of-use asset amortization",
+      "description": "Amortisasi aset hak guna (pabrik)",
+      "current": -1645,
+      "previous": -2338,
+      "delta_yoy": 693,
+      "growth_pct": -29.63,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Intangible amortization"
+      ],
+      "display_name": "Amortization of intangible assets (COGS)",
+      "description": "Amortisasi aset tak berwujud",
+      "current": -625,
+      "previous": -624,
+      "delta_yoy": -1,
+      "growth_pct": 0.16,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Insurance"
+      ],
+      "display_name": "Insurance",
+      "description": "Asuransi pabrik",
+      "current": -590,
+      "previous": -638,
+      "delta_yoy": 48,
+      "growth_pct": -7.52,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Other factory overhead"
+      ],
+      "display_name": "Other factory overhead",
+      "description": "Lain-lain (overhead pabrik)",
+      "current": -50277,
+      "previous": -49091,
+      "delta_yoy": -1186,
+      "growth_pct": 2.416,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "COGS_SUBCOMPONENT",
+      "hierarchy": [
+        "COGS",
+        "Subcomponents",
+        "Inventory change - finished goods"
+      ],
+      "display_name": "Inventory change (finished goods)",
+      "description": "Persediaan awal dan akhir barang jadi (netto)",
+      "current": -52778,
+      "previous": -19577,
+      "delta_yoy": -33201,
+      "growth_pct": 69.64,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 70,
+        "note": "Exhibit E/70 (Beginning and Ending FG inventory)"
+      },
+      "comments": "Computed as Beginning FG minus Ending FG"
+    },
+    {
+      "anchor": "GP_TOTAL",
+      "hierarchy": [
+        "Gross profit",
+        "",
+        ""
+      ],
+      "display_name": "Gross profit",
+      "description": "Revenue minus COGS",
+      "current": 2056818,
+      "previous": 2224418,
+      "delta_yoy": -167600,
+      "growth_pct": -7.533,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_TOTAL",
+      "hierarchy": [
+        "Operating expenses",
+        "",
+        ""
+      ],
+      "display_name": "Operating expenses (incl. net other operating items)",
+      "description": "Selling & G&A plus net other operating items reported above EBIT",
+      "current": -862940,
+      "previous": -1124879,
+      "delta_yoy": 261939,
+      "growth_pct": -23.292,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B – subtotal labelled 'Total' before EBIT"
+      },
+      "comments": "Includes FX gains/losses, gains on asset sales, livestock FV change and other income (net)"
+    },
+    {
+      "anchor": "OPEX_SELLING",
+      "hierarchy": [
+        "Operating expenses",
+        "Selling",
+        ""
+      ],
+      "display_name": "Selling expenses",
+      "description": "Beban penjualan",
+      "current": -740845,
+      "previous": -848039,
+      "delta_yoy": 107194,
+      "growth_pct": -12.635,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_GA",
+      "hierarchy": [
+        "Operating expenses",
+        "G&A",
+        ""
+      ],
+      "display_name": "General & administrative",
+      "description": "Beban administrasi dan umum",
+      "current": -211909,
+      "previous": -198833,
+      "delta_yoy": -13076,
+      "growth_pct": 6.578,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "OPEX_OTHER",
+      "hierarchy": [
+        "Operating expenses",
+        "Other operating income/(expense)",
+        ""
+      ],
+      "display_name": "Other operating items (net)",
+      "description": "FX gain/loss, asset sale gain, livestock FV change, other income (net) within operations",
+      "current": 89814,
+      "previous": -78007,
+      "delta_yoy": 167821,
+      "growth_pct": -314.964,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B - items between G&A and EBIT"
+      },
+      "comments": "Positive amount reduces Opex in 9M2025"
+    },
+    {
+      "anchor": "EBIT_TOTAL",
+      "hierarchy": [
+        "EBIT",
+        "",
+        ""
+      ],
+      "display_name": "Profit from operations (EBIT)",
+      "description": "Gross profit plus operating expenses subtotal",
+      "current": 1193878,
+      "previous": 1099539,
+      "delta_yoy": 94339,
+      "growth_pct": 8.577,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B - Laba dari Usaha"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance income",
+        ""
+      ],
+      "display_name": "Finance income",
+      "description": "Interest income and others",
+      "current": 28789,
+      "previous": 30157,
+      "delta_yoy": -1368,
+      "growth_pct": -4.536,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B; Note 31"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "FIN_EXPENSE",
+      "hierarchy": [
+        "Below EBIT",
+        "Finance expense",
+        ""
+      ],
+      "display_name": "Finance expense",
+      "description": "Interest and other finance costs",
+      "current": -98,
+      "previous": -1426,
+      "delta_yoy": 1328,
+      "growth_pct": -93.127,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B; Note 32"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "ASSOCIATE_INCOME",
+      "hierarchy": [
+        "Below EBIT",
+        "Share of profit of associates/JV",
+        ""
+      ],
+      "display_name": "Share of profit of associates and JVs",
+      "description": "Bagian laba neto atas entitas asosiasi dan ventura bersama",
+      "current": 15423,
+      "previous": 20088,
+      "delta_yoy": -4665,
+      "growth_pct": -23.23,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B; Note 11"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "PBT_TOTAL",
+      "hierarchy": [
+        "PBT",
+        "",
+        ""
+      ],
+      "display_name": "Profit before income tax",
+      "description": "EBIT plus net finance and associates",
+      "current": 1237992,
+      "previous": 1148358,
+      "delta_yoy": 89634,
+      "growth_pct": 7.806,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "TAX_EXPENSE",
+      "hierarchy": [
+        "Tax",
+        "",
+        ""
+      ],
+      "display_name": "Income tax expense",
+      "description": "Beban Pajak Penghasilan (current and deferred)",
+      "current": -260762,
+      "previous": -255188,
+      "delta_yoy": -5574,
+      "growth_pct": 2.185,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B; Note 33"
+      },
+      "comments": ""
+    },
+    {
+      "anchor": "NET_PROFIT_TOTAL",
+      "hierarchy": [
+        "Net profit",
+        "",
+        ""
+      ],
+      "display_name": "Net profit",
+      "description": "Profit for the period",
+      "current": 977230,
+      "previous": 893170,
+      "delta_yoy": 84060,
+      "growth_pct": 9.41,
+      "is_inferred": false,
+      "source_ref": {
+        "page": 1,
+        "note": "Exhibit B"
+      },
+      "comments": "Attributable to both owners and NCI"
+    }
+  ],
+  "summary": [
+    "Net sales fell 5.2% YoY to IDR 6,238bn, mainly from softer beverages; foods remained a small share.",
+    "COGS declined 4.1% as raw materials and maintenance costs eased; depreciation in COGS rose.",
+    "Opex improved sharply; selling expenses dropped 12.6% and other operating items swung to a net gain.",
+    "EBIT rose 8.6% to IDR 1,194bn, aided by FX gains and leaner selling costs.",
+    "Finance costs were minimal; share of associates fell to IDR 15.4bn.",
+    "Effective tax rate ~21.1%, slightly higher YoY.",
+    "Bottom line up 9.4% to IDR 977bn despite lower revenue."
+  ]
+}

@@ -1,0 +1,164 @@
+You are a meticulous financial-data extractor. I have attached a quarterly/annual financial report.
+Extract all components to build a Sankey from:
+REVENUE → COGS → GROSS PROFIT → OPEX → EBIT → (FIN & OTHER) → PBT → TAX → NET PROFIT.
+
+## OUTPUT CONTRACT (STRICT)
+Return ONE JSON object with these top-level keys only:
+- "meta"
+- "table"
+- "summary"
+
+### 1) meta  (you may add extra diagnostic fields here)
+{
+  "company": "<string>",
+  "period_label": "<string e.g., 9M2025 vs 9M2024>",
+  "currency": "IDR",
+  "unit": "million",                   // ALL numeric values are in IDR millions
+  "source_type": "pdf",
+  "source_notes": "<short note e.g., consolidated FS, unaudited>",
+  "version": "sankey-v1.1",
+  "validation": {
+    "rev_breakdown_basis": "<segment|product|service|market|geography|none|inferred>",
+    "rev_breakdown_sum": <number>,     // sum of INCLUDED revenue breakdown rows
+    "rev_total": <number>,             // REV_TOTAL.current
+    "rev_breakdown_tolerance": 0.005,  // 0.5% tolerance
+    "rev_breakdown_ok": <true|false>,
+    "cogs_sub_sum": <number>,          // sum of COGS_SUBCOMPONENT.current (included)
+    "cogs_total": <number>,
+    "cogs_tolerance": 0.01,            // 1% tolerance
+    "cogs_reconciles": <true|false>,
+    "opex_parts_sum": <number>,        // OPEX_SELLING + OPEX_GA + OPEX_RD + OPEX_OTHER
+    "opex_total": <number or null>,
+    "opex_tolerance": 0.01,
+    "opex_reconciles": <true|false>
+  }
+}
+
+### 2) table
+Array of row objects with EXACT keys:
+
+{
+  "anchor": "<Allowed code>",
+  "hierarchy": ["<L1>", "<L2>", "<L3>"],   // pad with "" if shorter
+  "display_name": "<node/link label>",
+  "description": "<short explanation>",
+  "current": <number>,                     // IDR millions; revenues & gains positive; costs/expenses NEGATIVE; profits positive
+  "previous": <number or null>,
+  "delta_yoy": <number or null>,           // current - previous (respecting sign convention)
+  "growth_pct": <number or null>,          // numeric percent, e.g., 18.6 (NOT "18.6%")
+  "is_inferred": <true|false>,             // true if you inferred/allocated
+  "source_ref": { "page": <int or null>, "note": "<string or null>" },
+  "comments": "<string>"
+}
+
+**Sign convention (MANDATORY):**
+- Revenue & gains: positive
+- Costs & expenses (COGS, Opex, Finance costs, Tax): negative
+- Profits/margins/subtotals (GP, EBIT, PBT, Net): positive
+- Inventory effects: keep native FS sign (often negative if deducting COGS).
+
+**Units (MANDATORY):** Convert all amounts to IDR **millions**.
+
+**Allowed ANCHOR CODES (use exactly these):**
+REV_TOTAL
+REV_BREAKDOWN_SEGMENT
+REV_BREAKDOWN_MARKET
+REV_BREAKDOWN_GEOGRAPHY
+REV_BREAKDOWN_OTHER
+COGS_TOTAL
+COGS_SUBCOMPONENT
+GP_TOTAL
+OPEX_TOTAL
+OPEX_SELLING
+OPEX_GA
+OPEX_RD
+OPEX_OTHER
+EBIT_TOTAL
+FIN_INCOME
+FIN_EXPENSE
+NON_OP_OTHER
+ASSOCIATE_INCOME
+FIN_OTHER_NET        // only if there are NO granular items
+PBT_TOTAL
+TAX_EXPENSE
+NET_PROFIT_TOTAL
+
+### REVENUE BREAKDOWN — PRIORITY & NO DOUBLE COUNTING
+1) **Priority order** for revenue breakdowns (choose ONE basis to include):
+   A. Product/Service or Operating Segment (preferred)
+   B. Market/Customer-Type
+   C. Geography
+2) If more than one is disclosed, **include ONLY the highest-priority set** and **exclude** the rest to avoid double counting.
+   - Include chosen rows with anchor = REV_BREAKDOWN_SEGMENT (for product/service/operating segment).
+   - DO NOT include REV_BREAKDOWN_MARKET / REV_BREAKDOWN_GEOGRAPHY if a segment/product/service set is included.
+3) **Validation:** Sum of INCLUDED revenue breakdown rows MUST be within ±0.5% of REV_TOTAL.current.
+   - If the sum is within tolerance but not exact, add a tiny balancing line:
+     {
+       "anchor":"REV_BREAKDOWN_SEGMENT",
+       "hierarchy":["Revenue","Segments",""],
+       "display_name":"Other / balancing",
+       "description":"Auto-balancing to match REV_TOTAL",
+       "current": <REV_TOTAL.current - sum_so_far>, "previous": null, "delta_yoy": null, "growth_pct": null,
+       "is_inferred": true, "source_ref":{"page": null,"note": "auto-balance"}, "comments":"balancing item"
+     }
+   - If **no** product/service split is present:
+     • Search segment notes (often titled “Segment Information”), MD&A, and revenue notes.
+     • If still unavailable, infer a **conservative** product/service split from narrative tables/notes (mark `is_inferred=true`) and add a balancing “Other”.
+     • Set meta.validation.rev_breakdown_basis to "inferred".
+4) **Exclusion rule:** If the FS shows both “market” and “product” splits and warns they are alternative views, **do not** include the lower-priority view at all (omit entirely from `table`).
+
+### COGS BREAKDOWN — RECONCILE TO TOTAL
+- Include `COGS_TOTAL` and detailed `COGS_SUBCOMPONENT` rows (raw materials, direct labor, overhead, inventory changes, etc.).
+- Ensure: abs(sum(COGS_SUBCOMPONENT.current)) ≈ abs(COGS_TOTAL.current) within 1% tolerance.
+- If not, add a balancing subcomponent:
+  {
+    "anchor":"COGS_SUBCOMPONENT",
+    "hierarchy":["COGS","Subcomponents","Other COGS (balancing)"],
+    "display_name":"Other COGS (balancing)",
+    "description":"Auto-balancer to reconcile to COGS total",
+    "current": <COGS_TOTAL.current - sum_subs>, "previous": null, "delta_yoy": null,
+    "growth_pct": null, "is_inferred": true,
+    "source_ref":{"page": null,"note":"auto-balance"},
+    "comments":"balancing item"
+  }
+
+### OPEX SPLIT — RECONCILE TO TOTAL
+- Provide `OPEX_TOTAL` and the split: `OPEX_SELLING`, `OPEX_GA`, `OPEX_RD` (if disclosed), `OPEX_OTHER`.
+- Ensure (OPEX_SELLING + OPEX_GA + OPEX_RD + OPEX_OTHER) ≈ OPEX_TOTAL within 1% tolerance.
+- Add "Other Opex (balancing)" with `anchor=OPEX_OTHER` if needed (is_inferred=true).
+
+### BELOW EBIT — NO DOUBLE COUNTING
+- Prefer granular items: `FIN_INCOME`, `FIN_EXPENSE`, `NON_OP_OTHER`, `ASSOCIATE_INCOME`.
+- Only use `FIN_OTHER_NET` **if** no granular items exist. Never include both net and parts.
+
+### BALANCING & FALLBACKS (apply in order)
+1) If REV_TOTAL missing, sum chosen revenue breakdown; set `is_inferred=true`.
+2) If COGS_TOTAL missing, sum `COGS_SUBCOMPONENT` (native signs); `is_inferred=true`.
+3) If GP_TOTAL missing, GP = REV_TOTAL + COGS_TOTAL; `is_inferred=true`.
+4) If OPEX_TOTAL missing, sum Opex parts; `is_inferred=true`.
+5) If EBIT_TOTAL missing, EBIT = GP + OPEX_TOTAL; `is_inferred=true`.
+6) If PBT_TOTAL missing, PBT = EBIT + FIN_INCOME + FIN_EXPENSE + NON_OP_OTHER + ASSOCIATE_INCOME; else add FIN_OTHER_NET if that is the only below-EBIT line; `is_inferred=true`.
+7) If TAX_EXPENSE missing, keep null (do not guess) unless the FS gives an explicit effective tax rate you can apply transparently.
+8) If NET_PROFIT_TOTAL missing, Net = PBT + TAX_EXPENSE; `is_inferred=true`.
+
+### HIERARCHY EXAMPLES
+- Revenue total: ["Revenue","",""]
+- Revenue breakdown by **product/service/segment** (priority): ["Revenue","Segments",""]
+- COGS subcomponent: ["COGS","Subcomponents","<name>"]
+- Opex Selling: ["Operating expenses","Selling",""]
+- Opex G&A:    ["Operating expenses","G&A",""]
+- Opex R&D:    ["Operating expenses","R&D",""]
+- Finance income: ["Below EBIT","Finance income",""]
+- PBT: ["PBT","",""]
+- Tax: ["Tax","",""]
+- Net: ["Net profit","",""]
+
+### 3) summary
+3–7 bullets, each ≤ 220 characters, focusing on drivers (growth, margin, cost changes, FX/finance swing, taxes).
+
+### VALIDATION (MANDATORY)
+- Output valid JSON only (no extra prose).
+- All monetary fields are numbers in IDR **millions**; signs follow the convention.
+- `growth_pct` numeric (e.g., 18.6).
+- Every row has a valid `anchor`.
+- Ensure `meta.validation.rev_breakdown_ok = true` and `meta.validation.cogs_reconciles = true`. If false, add appropriate balancing lines as above and set them to true.

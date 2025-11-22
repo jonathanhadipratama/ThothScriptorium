@@ -1,0 +1,74 @@
+########################################
+# PYTHON
+########################################
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyInstaller
+*.manifest
+*.spec
+
+########################################
+# STREAMlit / APP
+########################################
+
+# Streamlit config & cache
+.streamlit/
+
+# Local logs or debug output
+logs/
+*.log
+
+########################################
+# OS-SPECIFIC JUNK
+########################################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+########################################
+# EDITOR / IDE SETTINGS
+########################################
+
+# VSCode
+.vscode/
+.code/
+.settings/
+
+# PyCharm
+.idea/
+
+########################################
+# PROJECT DATA
+########################################
+
+
+########################################
+# SECURITY / ENV VARS
+########################################
+
+# Never commit secrets
+.env
+.env.*
+*.key
+*.pem
+*.token
+*.secret

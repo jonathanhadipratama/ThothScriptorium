@@ -8,9 +8,9 @@ import streamlit as st
 from src.plot_sankey import plot_income_sankey
 
 
-def hero_section(codes: list[str]) -> str:
-    """Render hero + ticker selector, return chosen code."""
-    with st.container():
+def hero_section(CODES: List[str]) -> str:
+    col_hero = st.container()
+    with col_hero:
         st.markdown(
             """
             <div class="hero">
@@ -23,25 +23,25 @@ def hero_section(codes: list[str]) -> str:
                         Explore profit flows like a destination map
                     </div>
                     <div class="hero-subtitle">
-                        Compare listed companies’ income statements as intuitive Sankey 
-                        diagrams – see how each rupiah of revenue travels through costs, 
-                        taxes, and finally lands in net profit.
+                        Compare listed companies’ income statements as intuitive Sankey diagrams.
                     </div>
                 </div>
                 <div class="hero-right">
-                    <div class="card" style="min-width: 260px;">
+                    <div class="card" style="min-width: 280px;">
                         <div class="card-title">Choose stock</div>
                         <div class="pill-select-label">Select a ticker to visualize</div>
             """,
             unsafe_allow_html=True,
         )
 
-        code = st.selectbox(
-            "Stock code",
-            codes,
-            index=0,
-            label_visibility="collapsed",
-        )
+        # --- DROPDOWN + PROCESS BUTTON ON SAME ROW ---
+        row1 = st.columns([2, 1])
+
+        with row1[0]:
+            code = st.selectbox("Stock code", CODES, label_visibility="collapsed")
+
+        with row1[1]:
+            process = st.button("Process", use_container_width=True)
 
         st.markdown(
             """
@@ -52,7 +52,7 @@ def hero_section(codes: list[str]) -> str:
             unsafe_allow_html=True,
         )
 
-    return code
+    return code, process
 
 
 def load_payload(data_dir: Path, code: str) -> tuple[pd.DataFrame, List[str], Dict[str, Any]]:

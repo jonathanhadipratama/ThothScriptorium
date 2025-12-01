@@ -1,5 +1,6 @@
 from pathlib import Path
 import streamlit as st
+
 from src.ui.theme import load_theme_css
 from src.ui.components import (
     hero_section,
@@ -8,6 +9,8 @@ from src.ui.components import (
     commentary_and_snapshot,
     raw_table_section,
 )
+from src.ui.fundamental_chart import quarterly_fundamental_chart
+from src.data_extraction import get_bigquery_client, get_all_and_quarterly, PROJECT_ID
 
 # ----------------- Page config -----------------
 st.set_page_config(
@@ -22,14 +25,28 @@ CODES = ["ULTJ", "MYOR", "CMRY", "UNVR", "INDF", "ICBP", "KEJU", "DMND", "GOOD"]
 # ----------------- Theme -----------------
 load_theme_css()
 
+# ----------------- Init session state -----------------
+if "active_code" not in st.session_state:
+    st.session_state.active_code = None
+
 # ----------------- Hero + ticker selection -----------------
 code, process_clicked = hero_section(CODES)
 
-# Wait until user clicks the button
+# If user clicked the main "Process" button, lock in the code
 if process_clicked:
+    st.session_state.active_code = code
+
+active_code = st.session_state.active_code
+
+# Wait until we have an active code
+if active_code is not None:
 
     # ----------------- Load data -----------------
-    table, summary, meta = load_payload(DATA_DIR, code)
+    table, summary, meta = load_payload(DATA_DIR, active_code)
+
+    # BigQuery data for the chart
+    client = get_bigquery_client(PROJECT_ID)
+    df_all, df_quarter = get_all_and_quarterly(active_code, client)
 
     # ----------------- Create pages (tabs) -----------------
     tabs = st.tabs(["Fundamental Summary", "Sankey Diagram", "Money Flow"])
@@ -37,13 +54,14 @@ if process_clicked:
     # --- TAB 1: Fundamental Summary ---------------------------------
     with tabs[0]:
         st.subheader("Fundamental Summary")
-        st.info("This section will contain the company's fundamental analysis summary.")
         commentary_and_snapshot(summary, meta)
+
+        st.markdown("---")
+        quarterly_fundamental_chart(active_code, df_quarter)
 
     # --- TAB 2: Sankey Diagram --------------------------------------
     with tabs[1]:
-        sankey_section(code)
-        # raw_table_section(table)
+        sankey_section(active_code)
 
     # --- TAB 3: Money Flow ------------------------------------------
     with tabs[2]:

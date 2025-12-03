@@ -17,6 +17,21 @@ def get_scale_and_unit(max_abs_value: float):
         return 1.0, ""
 
 
+def _choose_default_index(params, preferred_names, fallback_idx):
+    """
+    Given a sorted list of parameter names and a list of preferred names,
+    return the index of the first preferred name that exists in params.
+    If none found, return fallback_idx (bounded within params).
+    """
+    for name in preferred_names:
+        if name in params:
+            return params.index(name)
+    # Fallback, but keep within range
+    if not params:
+        return 0
+    return max(0, min(fallback_idx, len(params) - 1))
+
+
 def quarterly_fundamental_chart(code: str, df_quarter):
     """
     Render a dual-axis quarterly fundamentals chart for the given stock code,
@@ -41,6 +56,25 @@ def quarterly_fundamental_chart(code: str, df_quarter):
         st.warning("No parameters available to plot.")
         return
 
+    # ---------- Default selections: Revenue (left) & Net Income (right) ---------- #
+    # Try to match typical names; gracefully fall back if not present.
+    left_default_idx = _choose_default_index(
+        params,
+        preferred_names=["Revenue", "Sales (Net)", "Net sales", "Sales"],
+        fallback_idx=0,
+    )
+
+    right_default_idx = _choose_default_index(
+        params,
+        preferred_names=["Net Income", "Net income", "Net profit", "Profit for the period"],
+        fallback_idx=min(1, len(params) - 1),
+    )
+
+    # If by chance both defaults resolve to the same index and we have >1 param,
+    # nudge the right index to another parameter.
+    if right_default_idx == left_default_idx and len(params) > 1:
+        right_default_idx = (left_default_idx + 1) % len(params)
+
     # ---------- UI: parameter selectors in one row ---------- #
     col1, col2 = st.columns(2)
 
@@ -48,7 +82,7 @@ def quarterly_fundamental_chart(code: str, df_quarter):
         left_param = st.selectbox(
             "LEFT axis parameter",
             params,
-            index=0,
+            index=left_default_idx,
             key=f"{code}_left_param",
         )
 
@@ -56,16 +90,9 @@ def quarterly_fundamental_chart(code: str, df_quarter):
         right_param = st.selectbox(
             "RIGHT axis parameter",
             params,
-            index=1 if len(params) > 1 else 0,
+            index=right_default_idx,
             key=f"{code}_right_param",
         )
-
-    # ---------- Button to trigger chart ---------- #
-    run = st.button("Generate chart", key=f"{code}_generate_chart")
-
-    if not run:
-        st.info("Choose parameters, then click **Generate chart** to see the plot.")
-        return
 
     base = alt.Chart(df).encode(
         x=alt.X(
@@ -87,12 +114,14 @@ def quarterly_fundamental_chart(code: str, df_quarter):
         scale, unit = get_scale_and_unit(max_abs)
         axis_title = left_param if unit == "" else f"{left_param} ({unit})"
 
+        # Add a synthetic 'metric' field for color/legend
         chart = (
             base.transform_filter(
                 alt.datum.parameter == left_param
             )
             .transform_calculate(
-                scaled_value=f"datum.value_final / {scale}"
+                scaled_value=f"datum.value_final / {scale}",
+                metric=f"'{left_param}'",
             )
             .mark_line(point=True)
             .encode(
@@ -100,9 +129,16 @@ def quarterly_fundamental_chart(code: str, df_quarter):
                     "scaled_value:Q",
                     axis=alt.Axis(title=axis_title),
                 ),
-                color=alt.value("#1f77b4"),
+                color=alt.Color(
+                    "metric:N",
+                    scale=alt.Scale(
+                        domain=[left_param],
+                        range=["#1f77b4"],
+                    ),
+                    legend=alt.Legend(title="Metric"),
+                ),
                 tooltip=[
-                    alt.Tooltip("parameter:N", title="Parameter"),
+                    alt.Tooltip("metric:N", title="Metric"),
                     alt.Tooltip("period:N", title="Period"),
                     alt.Tooltip("year:Q", title="Year"),
                     alt.Tooltip("quarter:N", title="Quarter"),
@@ -140,12 +176,20 @@ def quarterly_fundamental_chart(code: str, df_quarter):
         right_param if unit_right == "" else f"{right_param} ({unit_right})"
     )
 
+    # Shared color scale & legend for both layers
+    color_scale = alt.Scale(
+        domain=[left_param, right_param],
+        range=["#1f77b4", "#ff7f0e"],
+    )
+    legend = alt.Legend(title="Metric")
+
     left_line = (
         base.transform_filter(
             alt.datum.parameter == left_param
         )
         .transform_calculate(
-            scaled_value=f"datum.value_final / {scale_left}"
+            scaled_value=f"datum.value_final / {scale_left}",
+            metric=f"'{left_param}'",
         )
         .mark_line(point=True)
         .encode(
@@ -153,9 +197,13 @@ def quarterly_fundamental_chart(code: str, df_quarter):
                 "scaled_value:Q",
                 axis=alt.Axis(title=axis_title_left),
             ),
-            color=alt.value("#1f77b4"),
+            color=alt.Color(
+                "metric:N",
+                scale=color_scale,
+                legend=legend,
+            ),
             tooltip=[
-                alt.Tooltip("parameter:N", title="Parameter"),
+                alt.Tooltip("metric:N", title="Metric"),
                 alt.Tooltip("period:N", title="Period"),
                 alt.Tooltip("year:Q", title="Year"),
                 alt.Tooltip("quarter:N", title="Quarter"),
@@ -169,7 +217,8 @@ def quarterly_fundamental_chart(code: str, df_quarter):
             alt.datum.parameter == right_param
         )
         .transform_calculate(
-            scaled_value=f"datum.value_final / {scale_right}"
+            scaled_value=f"datum.value_final / {scale_right}",
+            metric=f"'{right_param}'",
         )
         .mark_line(point=True)
         .encode(
@@ -177,9 +226,13 @@ def quarterly_fundamental_chart(code: str, df_quarter):
                 "scaled_value:Q",
                 axis=alt.Axis(title=axis_title_right, orient="right"),
             ),
-            color=alt.value("#ff7f0e"),
+            color=alt.Color(
+                "metric:N",
+                scale=color_scale,
+                legend=legend,
+            ),
             tooltip=[
-                alt.Tooltip("parameter:N", title="Parameter"),
+                alt.Tooltip("metric:N", title="Metric"),
                 alt.Tooltip("period:N", title="Period"),
                 alt.Tooltip("year:Q", title="Year"),
                 alt.Tooltip("quarter:N", title="Quarter"),

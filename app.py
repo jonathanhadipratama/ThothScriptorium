@@ -53,11 +53,15 @@ if active_code is not None:
 
     # --- TAB 1: Fundamental Summary ---------------------------------
     with tabs[0]:
-        st.subheader("Fundamental Summary")
-        commentary_and_snapshot(summary, meta)
 
         st.markdown("---")
         quarterly_fundamental_chart(active_code, df_quarter)
+
+        st.markdown("---")
+        st.subheader("Fundamental Summary")
+        commentary_and_snapshot(summary, meta)
+
+        
 
     # --- TAB 2: Sankey Diagram --------------------------------------
     with tabs[1]:

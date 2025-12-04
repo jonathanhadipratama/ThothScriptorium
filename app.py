@@ -61,6 +61,9 @@ if active_code is not None:
         st.subheader("Fundamental Summary")
         commentary_and_snapshot(summary, meta)
 
+        st.markdown("---")
+        st.subheader('Important Metrics')
+        
         
 
     # --- TAB 2: Sankey Diagram --------------------------------------

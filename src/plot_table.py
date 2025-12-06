@@ -100,7 +100,8 @@ segment_colors = {
     "Cash Flow": "#FFFFFF",
     "Risk":      "#E1F5F8",
     "Efficiency":"#FFFFFF",
-    "Valuation": "#E1F5F8",
+    "Valuation": "#E1F5F8"
+    "",
 }
 
 # -------------------------------------------------------------------

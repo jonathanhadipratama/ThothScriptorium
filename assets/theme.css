@@ -150,3 +150,125 @@ div[data-baseweb="select"] input {
 .card-light .comment-list li {
     margin-bottom: 0.35rem;     /* more breathing room per line */
 }
+
+/* Fundamental table container */
+.fundamental-table-container {
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
+    margin-top: 1rem;
+}
+
+/* Match font with the rest of the UI */
+.fundamental-table-container table {
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 0.85rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Header row styling */
+.fundamental-table-container th {
+    background: #f8fafc;
+    padding: 8px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Body cells */
+.fundamental-table-container td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Remove pandas default hover yellow */
+.fundamental-table-container tr:hover {
+    background: #f1f5f9 !important;
+}
+
+
+/* ------------------------ */
+/* Mobile tweaks            */
+/* ------------------------ */
+@media (max-width: 768px) {
+  /* Make the main container use the full width with smaller padding */
+  .block-container {
+    padding-top: 0.8rem;
+    padding-bottom: 2rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    max-width: 100%;
+  }
+
+  /* Hero: stack vertically instead of side-by-side */
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 16px;
+    border-radius: 18px;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-right .card {
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  /* Cards: slightly tighter padding on mobile */
+  .card,
+  .card-light {
+    padding: 12px 12px 10px 12px;
+    border-radius: 16px;
+  }
+
+  .section-header {
+    font-size: 0.95rem;
+  }
+
+  .section-sub {
+    font-size: 0.75rem;
+  }
+}
+
+/* Fundamental table wrapper */
+.fund-table-wrap {
+    margin-top: 0.75rem;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    overflow-x: auto;        /* horizontal scroll on small screens */
+}
+
+/* Keep table readable */
+.fund-table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+/* Optional: slightly smaller on mobile */
+@media (max-width: 768px) {
+  .fund-table-wrap table {
+    font-size: 0.72rem;
+  }
+}

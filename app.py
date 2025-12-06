@@ -10,6 +10,7 @@ from src.ui.components import (
     raw_table_section,
 )
 from src.ui.fundamental_chart import quarterly_fundamental_chart
+from src.ui.fundamental_table import render_core_fundamental_table
 from src.data_extraction import get_bigquery_client, get_all_and_quarterly, PROJECT_ID
 
 # ----------------- Page config -----------------
@@ -61,9 +62,13 @@ if active_code is not None:
         st.subheader("Fundamental Summary")
         commentary_and_snapshot(summary, meta)
 
+        # st.markdown("---")
+        # st.subheader('Important Metrics')
         st.markdown("---")
         st.subheader('Important Metrics')
-        
+
+        # >>> Here we embed the table using df_all that we already fetched
+        render_core_fundamental_table(active_code, df_all)
         
 
     # --- TAB 2: Sankey Diagram --------------------------------------

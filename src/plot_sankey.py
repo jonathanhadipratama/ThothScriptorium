@@ -3,19 +3,8 @@ import plotly.graph_objects as go
 
 def plot_income_sankey(company_code: str, base_path: str = "output"):
     """
-    Plot an income-statement Sankey diagram for a company.
-    
-    Parameters
-    ----------
-    company_code : str
-        Code used in the JSON filename, e.g. "CMRY" -> "output/CMRY.json".
-    base_path : str, optional
-        Folder where JSON files are stored. Default is "output".
-        
-    Returns
-    -------
-    fig : plotly.graph_objects.Figure
-        The Sankey figure object.
+    Plot an income-statement Sankey diagram for a company, with
+    percentages shown in the node labels.
     """
     # ---------- Load JSON ----------
     json_path = f"{base_path}/{company_code}.json"
@@ -164,17 +153,90 @@ def plot_income_sankey(company_code: str, base_path: str = "output"):
         ]
     )
 
-    # ---------- Formatting ----------
-    # unit is "million"; divide by 1000 to show in trillions
+    # ---------- Formatting helpers ----------
     def format_value(val):
+        # unit is "million"; divide by 1000 to show in trillions
         return f'{currency} {val/1000:,.1f}T'
 
+    def pct(num, denom):
+        if denom == 0:
+            return None
+        return 100.0 * num / denom
+
+    # ---------- Node values + percentages (vs previous node) ----------
     node_values = [0] * len(nodes)
     for s, t, v in flows:
         node_values[s] = max(node_values[s], v)
         node_values[t] = max(node_values[t], v)
 
-    labels = [f'<b>{nodes[i]}</b><br>{format_value(node_values[i])}' for i in range(len(nodes))]
+    # Precompute percentages relative to the *previous* node:
+    # - Segments: vs total revenue
+    # - Revenue: 100% of Revenue
+    # - COGS & GP: vs Revenue
+    # - Opex & EBIT: vs GP
+    # - PBT: vs EBIT
+    # - Tax & Net: vs PBT
+    pct_text = [""] * len(nodes)
+
+    # Segments
+    for i, seg in enumerate(segments):
+        p = pct(seg["current"], rev_total)
+        if p is not None:
+            pct_text[i] = f"{p:.1f}% of Revenue"
+
+    # Revenue
+    pct_text[idx_rev] = "100.0% of Revenue"
+
+    # COGS / GP vs Revenue
+    p_cogs = pct(cogs, rev_total)
+    p_gp   = pct(gp,   rev_total)
+    if p_cogs is not None:
+        pct_text[idx_cogs] = f"{p_cogs:.1f}% of Revenue"
+    if p_gp is not None:
+        pct_text[idx_gp] = f"{p_gp:.1f}% of Revenue"
+
+    # Opex / EBIT vs GP
+    p_opex = pct(opex_total, gp)
+    p_ebit = pct(ebit,       gp)
+    if p_opex is not None:
+        pct_text[idx_opex] = f"{p_opex:.1f}% of Gross profit"
+    if p_ebit is not None:
+        pct_text[idx_ebit] = f"{p_ebit:.1f}% of Gross profit"
+
+    # PBT vs EBIT
+    p_pbt = pct(pbt, ebit)
+    if p_pbt is not None:
+        pct_text[idx_pbt] = f"{p_pbt:.1f}% of EBIT"
+
+    # Tax / Net vs PBT
+    p_tax = pct(tax,        pbt)
+    p_np  = pct(net_profit, pbt)
+    if p_tax is not None:
+        pct_text[idx_tax] = f"{p_tax:.1f}% of PBT"
+    if p_np is not None:
+        pct_text[idx_np] = f"{p_np:.1f}% of PBT"
+
+    # Build final labels (always visible on the chart)
+    labels = []
+    for i, name in enumerate(nodes):
+        value_str = format_value(node_values[i])
+        pct_str   = pct_text[i]
+        if pct_str:
+            label = f"<b>{name}</b><br>{value_str}<br>{pct_str}"
+        else:
+            label = f"<b>{name}</b><br>{value_str}"
+        labels.append(label)
+
+    # ---------- Link-level percentages (in hover) ----------
+    # % of source node for each link
+    total_out = {}
+    for s, v in zip(source, value):
+        total_out[s] = total_out.get(s, 0) + v
+
+    link_pct = []
+    for s, v in zip(source, value):
+        p = pct(v, total_out[s]) if total_out.get(s) else None
+        link_pct.append(p if p is not None else 0.0)
 
     # ---------- Build Sankey ----------
     fig = go.Figure(data=[go.Sankey(
@@ -195,9 +257,11 @@ def plot_income_sankey(company_code: str, base_path: str = "output"):
             target=target,
             value=value,
             color=link_colors,
+            customdata=link_pct,
             hovertemplate=(
                 '%{source.label} → %{target.label}'
-                f'<br>%{{value:,.0f}} ({currency} {unit})<extra></extra>'
+                f'<br>%{{value:,.0f}} ({currency} {unit})'
+                '<br>%{customdata:.1f}% of source<extra></extra>'
             )
         )
     )])
@@ -217,56 +281,33 @@ def plot_income_sankey(company_code: str, base_path: str = "output"):
         height=800,
         width=1600,
         margin=dict(l=20, r=150, t=90, b=50),
-        annotations=[
-            dict(
-                x=1.08, y=0.95,
-                xref='paper', yref='paper',
-                text='<b>Profit Flow</b><br>(Top)',
-                showarrow=False,
-                font=dict(size=11, color='green'),
-                align='left'
-            ),
-            dict(
-                x=1.08, y=0.15,
-                xref='paper', yref='paper',
-                text='<b>Cost Flow</b><br>(Bottom)',
-                showarrow=False,
-                font=dict(size=11, color='red'),
-                align='left'
-            )
-        ]
     )
 
-    # fig.show()
-
-    # ---------- Text summary ----------
-    print("\n" + "="*70)
-    print(f"    Income Statement Summary ({meta['period_label'].split()[0]}) - {meta['company']}")
-    print("="*70)
-
-    print(f"\nRevenue Segments ({currency}, in trillion):")
-    if segments:
-        for s in segments:
-            print(f"  {s['display_name'][:32]:32} {format_value(s['current']):>16}")
-        print(f"  {'─'*44}")
-    else:
-        print("  (no segment breakdown)")
-    print(f"  Total Revenue:                    {format_value(rev_total):>16}")
-
-    print(f"\nProfitability:")
-    print(f"  Gross Profit:                     {format_value(gp):>16}  ({gp/rev_total*100:.1f}% of sales)")
-    print(f"  Operating Profit (EBIT):          {format_value(ebit):>16}  ({ebit/rev_total*100:.1f}% of sales)")
-    print(f"  Profit before tax (PBT):          {format_value(pbt):>16}  ({pbt/rev_total*100:.1f}% of sales)")
-    print(f"  Net Profit:                       {format_value(net_profit):>16}  ({net_profit/rev_total*100:.1f}% of sales)")
-
-    print(f"\nCosts:")
-    print(f"  Cost of goods sold:               {format_value(cogs):>16}  ({cogs/rev_total*100:.1f}% of sales)")
-    print(f"  Operating expenses:               {format_value(opex_total):>16}  ({opex_total/rev_total*100:.1f}% of sales)")
-    print(f"  Income tax:                       {format_value(tax):>16}  ({tax/pbt*100:.1f}% of PBT)")
-    print("="*70)
+    # (optional) console summary stays the same; you can remove if noisy
+    # print("\n" + "="*70)
+    # print(f"    Income Statement Summary ({meta['period_label'].split()[0]}) - {meta['company']}")
+    # print("="*70)
+    # print(f"\nRevenue Segments ({currency}, in trillion):")
+    # if segments:
+    #     for s in segments:
+    #         print(f"  {s['display_name'][:32]:32} {format_value(s['current']):>16}")
+    #     print(f"  {'─'*44}")
+    # else:
+    #     print("  (no segment breakdown)")
+    # print(f"  Total Revenue:                    {format_value(rev_total):>16}")
+    # print(f"\nProfitability:")
+    # print(f"  Gross Profit:                     {format_value(gp):>16}  ({gp/rev_total*100:.1f}% of sales)")
+    # print(f"  Operating Profit (EBIT):          {format_value(ebit):>16}  ({ebit/rev_total*100:.1f}% of sales)")
+    # print(f"  Profit before tax (PBT):          {format_value(pbt):>16}  ({pbt/rev_total*100:.1f}% of sales)")
+    # print(f"  Net Profit:                       {format_value(net_profit):>16}  ({net_profit/rev_total*100:.1f}% of sales)")
+    # print(f"\nCosts:")
+    # print(f"  Cost of goods sold:               {format_value(cogs):>16}  ({cogs/rev_total*100:.1f}% of sales)")
+    # print(f"  Operating expenses:               {format_value(opex_total):>16}  ({opex_total/rev_total*100:.1f}% of sales)")
+    # print(f"  Income tax:                       {format_value(tax):>16}  ({tax/pbt*100:.1f}% of PBT)")
+    # print("="*70)
 
     return fig
 
 if __name__ == "__main__":
-    fig = plot_income_sankey('UNVR')
+    fig = plot_income_sankey("UNVR")
     fig.show()

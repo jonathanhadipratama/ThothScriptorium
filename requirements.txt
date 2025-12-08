@@ -3,3 +3,5 @@ pandas==2.2.2
 plotly==5.24.1
 openai==1.82.1
 google-cloud-bigquery==3.32.0
+python-dotenv
+db-dtypes

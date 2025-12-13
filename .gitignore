@@ -30,7 +30,8 @@ dist/
 ########################################
 
 # Streamlit config & cache
-.streamlit/
+.streamlit/*
+!.streamlit/config.toml
 
 # Local logs or debug output
 logs/

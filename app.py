@@ -1,5 +1,8 @@
 from pathlib import Path
 import streamlit as st
+import plotly.io as pio
+# 👇 Force Plotly to use a light theme
+pio.templates.default = "plotly_white"
 
 from src.ui.theme import load_theme_css
 from src.ui.components import (

@@ -1,0 +1,28 @@
+{
+  "company": "KEJU",
+  "sector": "Food & Beverage",
+  "investment_stance": "Accumulate / Overweight for quality-biased staples exposure",
+  "investment_synthesis": "KEJU screens as a high-quality staples name with top-quartile returns (ROIC 21.5%, ROE 22.3%) and solid operating profitability (quarterly OPM 16.7%). Balance sheet risk is minimal, supported by a net cash position, exceptional interest coverage (575x), strong liquidity (current ratio 2.27), and a high Altman Z-score (7.71). Growth is healthy and comparatively stable, with revenue up 22.8% YoY and positive earnings growth without the extreme volatility seen in several peers. Cash flow quality is sound, with positive free cash flow and roughly 50% FCF/CFO conversion. Valuation (PE 22.5x) sits at a premium to larger diversified peers but is in line with quality growth names and appears reasonable on a growth-adjusted basis (PEG 0.27). Relative to peers, KEJU offers a superior risk profile and consistent growth, offset by a longer cash conversion cycle and only mid-pack inventory efficiency. Overall, it fits quality-focused portfolios seeking defensiveness with credible growth.",
+  "key_strengths": [
+    "High returns: ROIC 21.5% and ROE 22.3% among the stronger in the peer set",
+    "Robust balance sheet: net cash, very high interest coverage (575x), strong liquidity (current ratio 2.27), and high Altman Z (7.71)",
+    "Healthy growth: revenue +22.8% YoY and positive earnings growth without outsized volatility",
+    "Consistent cash generation: positive FCF with ~50% FCF/CFO conversion",
+    "Operational efficiency: strong asset turnover (1.30) relative to peers",
+    "Valuation reasonable on a growth-adjusted basis (PEG 0.27) versus peer dispersion"
+  ],
+  "key_risks": [
+    "Premium headline valuation (PE 22.5x) versus larger diversified peers (e.g., INDF, JPFA, TAPG) raises de-rating risk if growth moderates",
+    "Operating margin is solid but not best-in-class relative to select peers (e.g., CMRY, TAPG)",
+    "Working capital intensity: longer cash conversion cycle (71.6 days) and only mid-pack inventory turnover (4.63x)",
+    "Smaller absolute cash flow scale than major peers, potentially limiting financial flexibility for larger initiatives"
+  ],
+  "further_due_diligence": [
+    "Granularity on revenue growth drivers and durability relative to category and channel mix",
+    "Margin resilience under potential raw material and input cost fluctuations",
+    "Capital allocation framework (reinvestment, dividends, and potential M&A) given net cash",
+    "Plans to optimize working capital to shorten the cash conversion cycle and improve inventory turns",
+    "Peer pricing power and pass-through capabilities versus CMRY/ICBP to validate the premium multiple"
+  ],
+  "investment_profile": "Defensive quality with moderate growth; low leverage and strong balance sheet"
+}

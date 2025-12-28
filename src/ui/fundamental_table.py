@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
-from typing import List
+from typing import List, Tuple
 
 
 def human_format(x):
-    """Format numbers into K / M / B / T, keep small numbers as decimals."""
+    """
+    Format numbers into K / M / B / T, keep small numbers as decimals.
+    For small decimals, keep only two digits after the decimal point.
+    """
     if pd.isna(x):
         return ""
     if not isinstance(x, (int, float)):
@@ -21,16 +24,23 @@ def human_format(x):
     elif abs_x >= 1e3:
         return f"{x / 1e3:.2f}K"
     else:
-        return f"{x:.4f}".rstrip("0").rstrip(".")
+        # Two digits after decimal for small numbers
+        return f"{x:.2f}".rstrip("0").rstrip(".")
 
 
-def render_core_fundamental_table(code: str, df_all: pd.DataFrame) -> None:
+
+def _extract_core_fundamental_df(
+    code: str, df_all: pd.DataFrame
+) -> Tuple[pd.DataFrame | None, str | None]:
     """
-    Render the core fundamental table for the given stock code.
-    Uses df_all that has already been fetched (no extra queries).
+    Extract and shape the core fundamental data into a plain dataframe:
+      Segment | Metric | <code> | <peers...>
+    Returns:
+      - df_core (plain DataFrame) if success, else None
+      - warning message if failed, else None
     """
 
-    # ---- 1. Compute competitor list based on market cap ----
+    # Compute competitor list based on market cap ----
     df_market = (
         df_all[(df_all["metric"] == "market_cap") & (df_all["code"] != code)]
         [["code", "clean_value"]]
@@ -43,28 +53,27 @@ def render_core_fundamental_table(code: str, df_all: pd.DataFrame) -> None:
         .tolist()
     )
 
-    # Take top 5 competitors
-    competitors_sorted = competitors_sorted[:5]
+    # Take top x competitors
+    competitors_sorted = competitors_sorted[:10]
 
     # Final column order: selected code FIRST, then competitors (in market-cap order)
     final_cols: List[str] = [code] + competitors_sorted
 
-    # ---- 2. Build pivot table: metric x code ----
+    # Build pivot table: metric x code ----
     df_filtered = (
         df_all[df_all["code"].isin(final_cols)][["code", "metric", "clean_value"]]
         .drop_duplicates()
     )
 
     if df_filtered.empty:
-        st.warning("No data available for this stock.")
-        return
+        return None, "No data available for this stock."
 
     df = df_filtered.pivot(index="metric", columns="code", values="clean_value")
 
     # Ensure final column order inside pivot (skip any that might not exist)
     df = df[[c for c in final_cols if c in df.columns]]
 
-    # ---- 3. Keep only core metrics, in desired group order ----
+    # Keep only core metrics, in desired group order ----
     core_metrics_in_order = [
         # QUALITY
         "Return On Invested Capital (TTM)",
@@ -102,12 +111,11 @@ def render_core_fundamental_table(code: str, df_all: pd.DataFrame) -> None:
     metrics_available = [m for m in core_metrics_in_order if m in df.index]
 
     if not metrics_available:
-        st.warning("No core metrics available for this stock.")
-        return
+        return None, "No core metrics available for this stock."
 
     df_core = df.loc[metrics_available].copy()
 
-    # ---- 4. Segment color mapping + add Segment column ----
+    # Add Segment + move Metric to a column ----
     metric_to_segment = {
         # QUALITY
         "Return On Invested Capital (TTM)": "Quality",
@@ -142,28 +150,33 @@ def render_core_fundamental_table(code: str, df_all: pd.DataFrame) -> None:
         "PEG Ratio": "Valuation",
     }
 
-    segment_colors = {
-        "Quality":   "#FFFFFF",
-        "Growth":    "#E1F5F8",
-        "Cash Flow": "#FFFFFF",
-        "Risk":      "#E1F5F8",
-        "Efficiency":"#FFFFFF",
-        "Valuation": "#E1F5F8",
-    }
-
-    # Add Segment column based on metric index
     df_core["Segment"] = [metric_to_segment.get(m, "") for m in df_core.index]
 
-    # Move metric out of index into a real column "Metric"
     df_core = df_core.reset_index()
     df_core.rename(columns={"metric": "Metric"}, inplace=True)
 
-    # Desired column order in the table:
-    # Segment | Metric | <selected code> | <competitors...>
+    # Desired column order
     col_order = ["Segment", "Metric"] + [c for c in final_cols if c in df_core.columns]
     df_core = df_core[col_order]
 
-    # ---- 5. Row-wise highlight: color ENTIRE row including Segment + Metric ----
+    return df_core, None
+
+# Styling
+def _style_core_fundamental_df(df_core: pd.DataFrame) -> pd.io.formats.style.Styler:
+    """
+    Apply formatting + row highlight to the already-shaped df_core.
+    No data logic here—only styling.
+    """
+
+    segment_colors = {
+        "Quality":    "#FFFFFF",
+        "Growth":     "#E1F5F8",
+        "Cash Flow":  "#FFFFFF",
+        "Risk":       "#E1F5F8",
+        "Efficiency": "#FFFFFF",
+        "Valuation":  "#E1F5F8",
+    }
+
     def highlight_row(row):
         segment = row["Segment"]
         color = segment_colors.get(segment, "")
@@ -172,27 +185,27 @@ def render_core_fundamental_table(code: str, df_all: pd.DataFrame) -> None:
         else:
             return [""] * len(row)
 
-    # Only format numeric columns (the tickers); Segment & Metric stay as text
     numeric_cols = [c for c in df_core.columns if c not in ("Segment", "Metric")]
 
-    styled = (
-        df_core
-        .style
+    return (
+        df_core.style
         .format(human_format, subset=numeric_cols)
         .apply(highlight_row, axis=1)
     )
 
-    # ---- 6. Render inside a themed card so it matches the app ----
-    table_html = styled.to_html()
 
-    st.markdown(
-        f"""
-        <div class="card-light" style="margin-top: 1.2rem;">
-            <div class="card-title">
-                Core fundamental metrics – peers vs <b>{code}</b>
-            </div>
-            {table_html}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+# Rendering
+def _render_core_fundamental_table_ui(code: str, styled) -> None:
+    st.caption(f"Core fundamental metrics - {code} vs peers")
+    st.dataframe(styled, use_container_width=True, height=600)
+
+
+# End function
+def render_core_fundamental_table(code: str, df_all: pd.DataFrame) -> None:
+    df_core, warning_msg = _extract_core_fundamental_df(code, df_all)
+    if warning_msg:
+        st.warning(warning_msg)
+        return
+
+    styled = _style_core_fundamental_df(df_core)
+    _render_core_fundamental_table_ui(code, styled)

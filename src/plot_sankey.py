@@ -283,29 +283,6 @@ def plot_income_sankey(company_code: str, base_path: str = "output"):
         margin=dict(l=20, r=150, t=90, b=50),
     )
 
-    # (optional) console summary stays the same; you can remove if noisy
-    # print("\n" + "="*70)
-    # print(f"    Income Statement Summary ({meta['period_label'].split()[0]}) - {meta['company']}")
-    # print("="*70)
-    # print(f"\nRevenue Segments ({currency}, in trillion):")
-    # if segments:
-    #     for s in segments:
-    #         print(f"  {s['display_name'][:32]:32} {format_value(s['current']):>16}")
-    #     print(f"  {'─'*44}")
-    # else:
-    #     print("  (no segment breakdown)")
-    # print(f"  Total Revenue:                    {format_value(rev_total):>16}")
-    # print(f"\nProfitability:")
-    # print(f"  Gross Profit:                     {format_value(gp):>16}  ({gp/rev_total*100:.1f}% of sales)")
-    # print(f"  Operating Profit (EBIT):          {format_value(ebit):>16}  ({ebit/rev_total*100:.1f}% of sales)")
-    # print(f"  Profit before tax (PBT):          {format_value(pbt):>16}  ({pbt/rev_total*100:.1f}% of sales)")
-    # print(f"  Net Profit:                       {format_value(net_profit):>16}  ({net_profit/rev_total*100:.1f}% of sales)")
-    # print(f"\nCosts:")
-    # print(f"  Cost of goods sold:               {format_value(cogs):>16}  ({cogs/rev_total*100:.1f}% of sales)")
-    # print(f"  Operating expenses:               {format_value(opex_total):>16}  ({opex_total/rev_total*100:.1f}% of sales)")
-    # print(f"  Income tax:                       {format_value(tax):>16}  ({tax/pbt*100:.1f}% of PBT)")
-    # print("="*70)
-
     return fig
 
 if __name__ == "__main__":

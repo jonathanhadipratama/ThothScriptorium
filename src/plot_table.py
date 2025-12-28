@@ -10,7 +10,7 @@ df_all, df_quarter = get_all_and_quarterly(code, client)
 
 category = df_all[(df_all['metric']=='market_cap')&
                      (df_all['code']!=code)][['code','clean_value']]\
-                            .drop_duplicates().sort_values('clean_value', ascending = False).head(5)['code'].unique()
+                            .drop_duplicates().sort_values('clean_value', ascending = False).head(10)['code'].unique()
 
 category = [code] + list(category)
 

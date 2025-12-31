@@ -275,7 +275,7 @@ def plot_income_sankey(company_code: str, base_path: str = "output"):
             'y': 0.97,
             'yanchor': 'top'
         },
-        font=dict(size=12, family='Arial'),
+        font=dict(color='#1F3A5F', size=12, family='Arial'),
         plot_bgcolor='#FAFAFA',
         paper_bgcolor='white',
         height=800,

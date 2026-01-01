@@ -18,11 +18,12 @@ with st.sidebar:
 
 
 # --- Pages ---
-comp_profile = st.Page('company_profile.py', title="Dashboard", icon=":material/dashboard:", default=True)
-foreign_flow = st.Page("foreignflow.py", title="Bug reports", icon=":material/airwave:")
+foreign_flow = st.Page("foreignflow.py", title="Foreign Flow", icon=":material/airwave:", default=True)
+comp_profile = st.Page('company_profile.py', title="Dashboard", icon=":material/dashboard:")
+
 
 pg = st.navigation(
-    {"Reports": [comp_profile, foreign_flow],}
+    {"Reports": [foreign_flow, comp_profile]}
 )
 
 pg.run()

@@ -3,6 +3,7 @@ import streamlit as st
 from pathlib import Path
 from src.ui.components import hero_header
 from src.ui.theme import load_theme_css
+from src.plot_scatter import render_scatter
 
 load_theme_css()
 st.set_page_config(page_title="Foreign Flow", layout="wide")
@@ -45,6 +46,7 @@ def style_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     styler = styled_df.style.format({col: format_number for col in num_cols})
     return styler
 
+render_scatter()
 
 st.title("Foreign Flow")
 
@@ -52,6 +54,7 @@ st.title("Foreign Flow")
 st.header("Sector Flow (All)")
 
 try:
+    
     sector_df = load_csv(SECTOR_PATH)
     target_col = "positive_net_ratio_10d"
     

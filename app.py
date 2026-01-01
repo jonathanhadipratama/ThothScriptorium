@@ -19,7 +19,7 @@ with st.sidebar:
 
 # --- Pages ---
 foreign_flow = st.Page("foreignflow.py", title="Foreign Flow", icon=":material/airwave:", default=True)
-comp_profile = st.Page('company_profile.py', title="Dashboard", icon=":material/dashboard:")
+comp_profile = st.Page('company_profile.py', title="Company Profile", icon=":material/dashboard:")
 
 
 pg = st.navigation(

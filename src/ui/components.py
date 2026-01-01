@@ -61,6 +61,29 @@ def hero_section(CODES: List[str]) -> str:
 
     return code, process
 
+def hero_header() -> None:
+    """Header/hero markup only (no dropdown, no button)."""
+    col_hero = st.container()
+    with col_hero:
+        st.markdown(
+            """
+            <div class="hero">
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <span>📜 Thoth Scriptorium</span>
+                        <span style="opacity:0.7;">Recorded financial truths</span>
+                    </div>
+                    <div class="hero-title">
+                        Decode company fundamentals with ancient precision
+                    </div>
+                    <div class="hero-subtitle">
+                        From papyrus to platforms: the discipline of Thoth lives on.
+                    </div>
+                </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
 
 def load_payload(data_dir: Path, code: str) -> tuple[pd.DataFrame, List[str], Dict[str, Any]]:
     payload = json.loads((data_dir / f"{code}.json").read_text(encoding="utf-8"))

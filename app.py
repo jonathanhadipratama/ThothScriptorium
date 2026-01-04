@@ -1,4 +1,6 @@
 import streamlit as st
+from dotenv import load_dotenv
+load_dotenv()
 
 # st.set_page_config(page_title="Streamlit Template", layout="wide")
 
@@ -13,7 +15,7 @@ st.set_page_config(
 with st.sidebar:
     st.image(
         "assets/logo.png",
-        use_container_width=True,
+        width='stretch',
     )
 
 

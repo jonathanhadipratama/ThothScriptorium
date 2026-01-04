@@ -13,6 +13,7 @@ Streamlit app: RSI Weekly vs Monthly Scatterplot (text labels, no legend)
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Tuple, List
+from src.data_extraction import get_sector_rsi
 
 import pandas as pd
 import plotly.express as px
@@ -49,10 +50,10 @@ class AppConfig:
 # Data Layer
 # =========================
 
-def load_data(path: Path) -> pd.DataFrame:
-    if not path.exists():
-        raise FileNotFoundError(f"Data file not found: {path.resolve()}")
-    return pd.read_csv(path)
+# def load_data(path: Path) -> pd.DataFrame:
+#     if not path.exists():
+#         raise FileNotFoundError(f"Data file not found: {path.resolve()}")
+#     return pd.read_csv(path)
 
 
 def prepare_data(df: pd.DataFrame, required_cols: List[str], x_col: str, y_col: str) -> Tuple[pd.DataFrame, int]:
@@ -168,7 +169,7 @@ def run_app(cfg: AppConfig) -> None:
     required_cols = [cfg.x_col, cfg.y_col, cfg.label_col, *cfg.hover_cols]
 
     try:
-        df = load_data(cfg.data_path)
+        df = get_sector_rsi()
         df_clean, dropped_rows = prepare_data(df, required_cols, cfg.x_col, cfg.y_col)
     except Exception as e:
         st.error(str(e))

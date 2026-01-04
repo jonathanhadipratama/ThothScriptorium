@@ -4,6 +4,7 @@ from pathlib import Path
 from src.ui.components import hero_header
 from src.ui.theme import load_theme_css
 from src.plot_scatter import render_scatter
+from src.data_extraction import get_sector_flow, get_stock_flow
 
 load_theme_css()
 st.set_page_config(page_title="Foreign Flow", layout="wide")
@@ -55,11 +56,11 @@ st.header("Sector Flow (All)")
 
 try:
     
-    sector_df = load_csv(SECTOR_PATH)
+    sector_df = get_sector_flow()
     target_col = "positive_net_ratio_10d"
     
     if target_col not in sector_df.columns:
-        st.error(f'sector_flow.csv must contain a "{target_col}" column.')
+        st.error(f'sector_flow dataset must contain a "{target_col}" column.')
     else:
         # Ensure numeric for filtering
         sector_df[target_col] = pd.to_numeric(sector_df[target_col], errors="coerce")
@@ -87,7 +88,7 @@ try:
         # Display with styling
         st.dataframe(
             style_dataframe(filtered_sector),
-            use_container_width=True,
+            width='stretch',
             height=420
         )
 
@@ -100,10 +101,10 @@ st.divider()
 st.header("Stock Flow (Filter by Sector)")
 
 try:
-    stock_df = load_csv(STOCK_PATH)
+    stock_df = get_stock_flow()
     
     if "sector" not in stock_df.columns:
-        st.error('stock_flow.csv must contain a "sector" column.')
+        st.error('stock_flow dataset must contain a "sector" column.')
     else:
         sectors = sorted(
             stock_df["sector"]

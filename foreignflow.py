@@ -5,6 +5,7 @@ from src.ui.components import hero_header
 from src.ui.theme import load_theme_css
 from src.plot_scatter import render_scatter
 from src.data_extraction import get_sector_flow, get_stock_flow
+from src.plot_minervini_table import render_minervini_table
 
 load_theme_css()
 st.set_page_config(page_title="Foreign Flow", layout="wide")
@@ -87,7 +88,7 @@ try:
         
         # Display with styling
         st.dataframe(
-            style_dataframe(filtered_sector),
+            style_dataframe(filtered_sector.sort_values('positive_net_ratio_10d', ascending = False)),
             width='stretch',
             height=420
         )
@@ -126,10 +127,14 @@ try:
         
         # Display with styling
         st.dataframe(
-            style_dataframe(filtered_df),
+            style_dataframe(filtered_df.sort_values('positive_net_ratio_10d', ascending = False)),
             use_container_width=True,
             height=520
         )
 
 except Exception as e:
     st.error(f"Failed to load stock_flow.csv: {e}")
+
+st.divider()
+st.header("Minervini Screener")
+render_minervini_table()

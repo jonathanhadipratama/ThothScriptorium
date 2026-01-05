@@ -29,6 +29,11 @@ SECTOR_RSI_TABLE = os.getenv(
     "silver-ripple-355716.adl.sector_rsi_recent",
 )
 
+SCREENER_MINERVINI_TABLE = os.getenv(
+    "BIGQUERY_SECTOR_RSI_TABLE",
+    "silver-ripple-355716.adl.screener_minervini_recent",
+)
+
 # (Your existing tables can stay here too if you still use them)
 BIGQUERY_TABLE_ALL = os.getenv(
     "BIGQUERY_TABLE_ALL",
@@ -135,6 +140,17 @@ def get_sector_rsi(client: Optional[bigquery.Client] = None) -> pd.DataFrame:
     query = f"""
         SELECT *
         FROM `{SECTOR_RSI_TABLE}`
+    """
+    return run_query(query, client=client)
+
+def get_screener_minervini(client: Optional[bigquery.Client] = None) -> pd.DataFrame:
+    """
+    Fetch sector RSI data from:
+      silver-ripple-355716.adl.screener_minervini
+    """
+    query = f"""
+        SELECT *
+        FROM `{SCREENER_MINERVINI_TABLE}`
     """
     return run_query(query, client=client)
 

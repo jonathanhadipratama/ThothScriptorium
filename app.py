@@ -1,5 +1,7 @@
 import streamlit as st
 from dotenv import load_dotenv
+from src.ui.time_section import week_counter_2026_section
+
 load_dotenv()
 
 # st.set_page_config(page_title="Streamlit Template", layout="wide")
@@ -18,9 +20,11 @@ with st.sidebar:
         width='stretch',
     )
 
+    week_counter_2026_section()
+
 
 # --- Pages ---
-foreign_flow = st.Page("foreignflow.py", title="Foreign Flow", icon=":material/airwave:", default=True)
+foreign_flow = st.Page("foreignflow.py", title="Screener", icon=":material/airwave:", default=True)
 comp_profile = st.Page('company_profile.py', title="Company Profile", icon=":material/dashboard:")
 
 

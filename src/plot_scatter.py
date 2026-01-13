@@ -111,46 +111,67 @@ def create_scatterplot(
     df: pd.DataFrame,
     x_col: str,
     y_col: str,
-    label_col_for_plot: str,
+    label_col: str,  # e.g. "sector" or "sub_sector"
     hover_cols: Tuple[str, ...],
     axis_min: int,
     axis_max: int,
     neutral_low: int,
     neutral_high: int,
 ):
+    # Build hover fields (always include the sector/label column)
     hover_data = {c: True for c in hover_cols if c in df.columns}
+    hover_data[label_col] = True
 
+    # If point_label exists, hide it from hover (it’s often blank)
+    if "point_label" in df.columns:
+        hover_data["point_label"] = False
+
+    # --- Base scatter: ALL points, hover works everywhere ---
     fig = px.scatter(
         df,
         x=x_col,
         y=y_col,
-        text=label_col_for_plot,     # uses filtered labels
-        hover_data=hover_data,
+        hover_name=label_col,      # <- shows sector prominently
+        hover_data=hover_data,     # <- includes sector + your extra fields
         title="RSI Weekly vs Monthly",
         opacity=0.85,
     )
 
     fig.update_traces(
-        textposition="top center",
         marker=dict(size=8),
         showlegend=False,
+    )
+
+    # --- Label trace: ONLY outside neutral zone (text only, no hover) ---
+    outside = (
+        (df[x_col] < neutral_low)
+        | (df[x_col] > neutral_high)
+        | (df[y_col] < neutral_low)
+        | (df[y_col] > neutral_high)
+    )
+    df_labels = df.loc[outside, [x_col, y_col, label_col]].copy()
+
+    fig.add_scatter(
+        x=df_labels[x_col],
+        y=df_labels[y_col],
+        mode="text",
+        text=df_labels[label_col],
+        textposition="top center",
+        showlegend=False,
+        hoverinfo="skip",  # <- IMPORTANT: this trace won’t “steal” hover
     )
 
     fig.update_xaxes(range=[axis_min, axis_max], title=x_col)
     fig.update_yaxes(range=[axis_min, axis_max], title=y_col)
 
-    # Neutral zone guide lines (optional but helpful)
     fig.add_vline(x=neutral_low, line_width=1)
     fig.add_vline(x=neutral_high, line_width=1)
     fig.add_hline(y=neutral_low, line_width=1)
     fig.add_hline(y=neutral_high, line_width=1)
 
-    fig.update_layout(
-        height=650,
-        margin=dict(l=40, r=40, t=60, b=40),
-    )
-
+    fig.update_layout(height=650, margin=dict(l=40, r=40, t=60, b=40))
     return fig
+
 
 
 # =========================
@@ -188,16 +209,16 @@ def run_app(cfg: AppConfig) -> None:
     )
 
     fig = create_scatterplot(
-        df_plot,
-        x_col=cfg.x_col,
-        y_col=cfg.y_col,
-        label_col_for_plot="point_label",
-        hover_cols=cfg.hover_cols,
-        axis_min=cfg.axis_min,
-        axis_max=cfg.axis_max,
-        neutral_low=cfg.neutral_low,
-        neutral_high=cfg.neutral_high,
-    )
+            df_clean,                      # use full data
+            x_col=cfg.x_col,
+            y_col=cfg.y_col,
+            label_col=cfg.label_col,       # e.g. "sector" or "sub_sector"
+            hover_cols=cfg.hover_cols,
+            axis_min=cfg.axis_min,
+            axis_max=cfg.axis_max,
+            neutral_low=cfg.neutral_low,
+            neutral_high=cfg.neutral_high,
+        )
 
     st.plotly_chart(fig, use_container_width=True)
 

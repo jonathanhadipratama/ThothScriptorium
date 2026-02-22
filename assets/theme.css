@@ -1,49 +1,120 @@
-/* Overall page */
+/* =========================================
+   BASE
+   ========================================= */
 .stApp {
-    background: radial-gradient(circle at top left, #fff7f4 0, #ffffff 40%, #f7fafc 100%);
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: #F5F6FA;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
-/* Hide Streamlit default header/footer */
 header[data-testid="stHeader"] { background: transparent; }
 footer { visibility: hidden; }
 
-/* Main container width tweaks */
 .block-container {
     padding-top: 1.5rem;
     padding-bottom: 3rem;
     max-width: 1200px;
 }
 
-/* Hero section — minimal, calm, shadcn-like */
+
+/* =========================================
+   SIDEBAR — dark navy (Kravio style)
+   ========================================= */
+[data-testid="stSidebar"],
+[data-testid="stSidebar"] > div:first-child {
+    background: #1C1E2E !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Sidebar text → light */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
+/* Nav links */
+[data-testid="stSidebarNav"] a {
+    color: rgba(255, 255, 255, 0.58) !important;
+    border-radius: 8px !important;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-testid="stSidebarNav"] a:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+[data-testid="stSidebarNav"] [aria-current="page"] {
+    background: rgba(45, 212, 191, 0.13) !important;
+    color: #2DD4BF !important;
+}
+
+/* Nav section separator labels */
+[data-testid="stSidebarNavSeparator"] {
+    opacity: 0.3;
+}
+
+/* =========================================
+   SIDEBAR — week-counter card overrides
+   ========================================= */
+[data-testid="stSidebar"] .week-card {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+[data-testid="stSidebar"] .week-title {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+[data-testid="stSidebar"] .week-caption {
+    color: rgba(255, 255, 255, 0.42) !important;
+}
+
+[data-testid="stSidebar"] .reflection-title {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+[data-testid="stSidebar"] .reflection-box {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.68) !important;
+}
+
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
 .hero {
     background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);   /* subtle border */
-    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
     padding: 20px 22px;
-    color: #0f172a;                             /* slate-900 */
+    color: #1E293B;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 18px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);     /* soft shadow */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     margin-bottom: 18px;
 }
 
-.hero-left {
-    flex: 2;
-}
+.hero-left { flex: 2; }
 
 .hero-title {
     font-size: 1.4rem;
     font-weight: 650;
     margin: 0.2rem 0 0.35rem 0;
     letter-spacing: -0.01em;
+    color: #0F172A;
 }
 
 .hero-subtitle {
     font-size: 0.95rem;
-    color: rgba(15, 23, 42, 0.65);              /* muted slate */
+    color: #6B7280;
     max-width: 560px;
     line-height: 1.45;
 }
@@ -52,12 +123,12 @@ footer { visibility: hidden; }
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(15, 23, 42, 0.04);         /* very light chip */
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    padding: 6px 10px;
+    background: rgba(13, 148, 136, 0.08);
+    border: 1px solid rgba(13, 148, 136, 0.22);
+    padding: 5px 10px;
     border-radius: 999px;
     font-size: 0.78rem;
-    color: rgba(15, 23, 42, 0.72);
+    color: #0D9488;
     margin-bottom: 0.35rem;
 }
 
@@ -68,54 +139,167 @@ footer { visibility: hidden; }
     align-items: stretch;
 }
 
-/* Optional: make the right card match the same soft surface */
 .hero-right .card {
     background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 14px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-/* Optional: keep small labels calm */
 .hero-right .pill-select-label {
-    color: rgba(15, 23, 42, 0.6);
+    color: #6B7280;
 }
 
 
-/* Card shell */
+/* =========================================
+   CARDS
+   ========================================= */
 .card {
     background: #ffffff;
-    border-radius: 20px;
-    padding: 18px 18px 14px 18px;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
-    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    border: 1px solid #E5E7EB;
 }
 
 .card-light {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    padding: 14px 16px 10px 16px;
-    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
-    border: 1px solid rgba(226, 232, 240, 0.9);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 18px 12px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
 }
 
 .card-title {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 0.4rem;
-    color: #0f172a;
+    color: #0F172A;
 }
 
-/* Selectbox styling */
+.card-wrap {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 18px 12px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-wrap .js-plotly-plot,
+.card-wrap iframe {
+    border-radius: 10px;
+}
+
+.card-wrap > div[data-testid="stVerticalBlock"] {
+    gap: 0.35rem;
+}
+
+
+/* =========================================
+   STREAMLIT BORDERED CONTAINERS
+   ========================================= */
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+    border: 1px solid #E5E7EB !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+.stButton > button {
+    background: #0D9488 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: background 0.15s ease !important;
+}
+
+.stButton > button:hover {
+    background: #0F766E !important;
+}
+
+
+/* =========================================
+   TABS
+   ========================================= */
+.stTabs [data-baseweb="tab-list"] {
+    background: transparent;
+    border-bottom: 1px solid #E5E7EB;
+    gap: 0;
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: #6B7280;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 0;
+    padding: 10px 18px;
+    border-bottom: 2px solid transparent;
+    background: transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: #0D9488 !important;
+    border-bottom-color: #0D9488 !important;
+    background: transparent !important;
+}
+
+
+/* =========================================
+   MAIN-CONTENT WIDGET BACKGROUNDS
+   (restore light bg after secondaryBackgroundColor is set dark for sidebar)
+   ========================================= */
+
+/* Text inputs, number inputs, text areas */
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+[data-testid="stTextArea"] textarea {
+    background: #ffffff !important;
+    color: #1E293B !important;
+    border: 1px solid #D1D5DB !important;
+    border-radius: 8px !important;
+}
+
+/* Expander */
+[data-testid="stExpander"] {
+    background: #ffffff !important;
+    border: 1px solid #E5E7EB !important;
+    border-radius: 10px !important;
+}
+
+/* Code blocks */
+[data-testid="stCodeBlock"],
+.stCode {
+    background: #F8FAFC !important;
+}
+
+/* Multiselect tags */
+[data-baseweb="tag"] {
+    background: rgba(13, 148, 136, 0.1) !important;
+    color: #0D9488 !important;
+}
+
+
+/* =========================================
+   SELECTBOX
+   ========================================= */
 .pill-select-label {
     font-size: 0.8rem;
-    color: #64748b;
+    color: #6B7280;
     margin-bottom: 0.35rem;
 }
 
 div[data-baseweb="select"] > div {
-    border-radius: 999px !important;
-    border: 1px solid rgba(148, 163, 184, 0.8) !important;
+    border-radius: 8px !important;
+    border: 1px solid #D1D5DB !important;
     box-shadow: none !important;
     background: #ffffff;
     min-height: 38px;
@@ -125,210 +309,133 @@ div[data-baseweb="select"] input {
     font-size: 0.9rem !important;
 }
 
-/* Section headings */
+
+/* =========================================
+   SLIDERS
+   ========================================= */
+[data-testid="stSlider"] [role="progressbar"] {
+    background: #0D9488 !important;
+}
+
+[data-testid="stSlider"] [role="slider"] {
+    background: #0D9488 !important;
+    border-color: #0D9488 !important;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
 .section-header {
     font-size: 1.05rem;
     font-weight: 600;
     margin: 0.4rem 0 0.2rem 0;
-    color: #0f172a;
+    color: #0F172A;
 }
 
 .section-sub {
     font-size: 0.8rem;
-    color: #64748b;
+    color: #6B7280;
     margin-bottom: 0.6rem;
 }
 
-/* Commentary bullets */
+
+/* =========================================
+   COMMENTARY LISTS
+   ========================================= */
 .comment-list li {
     margin-bottom: 0.25rem;
     line-height: 1.4;
 }
 
-/* Dataframe container */
-.dataframe-wrap {
-    margin-top: 0.2rem;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(148, 163, 184, 0.35);
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-}
-
-/* Commentary bullets */
-.comment-list li {
-    margin-bottom: 0.25rem;
-    line-height: 1.4;
-}
-
-/* Better spacing for commentary list inside card */
 .card-light .comment-list {
-    margin: 0.35rem 0 0 0;      /* top margin inside card */
-    padding-left: 1.15rem;      /* indent bullets nicely */
+    margin: 0.35rem 0 0 0;
+    padding-left: 1.15rem;
 }
 
 .card-light .comment-list li {
-    margin-bottom: 0.35rem;     /* more breathing room per line */
-}
-
-/* Fundamental table container */
-.fundamental-table-container {
-    padding: 18px 20px;
-    border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
-    margin-top: 1rem;
-}
-
-/* Match font with the rest of the UI */
-.fundamental-table-container table {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    font-size: 0.85rem;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-/* Header row styling */
-.fundamental-table-container th {
-    background: #f8fafc;
-    padding: 8px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Body cells */
-.fundamental-table-container td {
-    padding: 6px 8px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Remove pandas default hover yellow */
-.fundamental-table-container tr:hover {
-    background: #f1f5f9 !important;
+    margin-bottom: 0.35rem;
 }
 
 
-/* ------------------------ */
-/* Mobile tweaks            */
-/* ------------------------ */
-@media (max-width: 768px) {
-  /* Make the main container use the full width with smaller padding */
-  .block-container {
-    padding-top: 0.8rem;
-    padding-bottom: 2rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    max-width: 100%;
-  }
-
-  /* Hero: stack vertically instead of side-by-side */
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 16px 16px;
-    border-radius: 18px;
-  }
-
-  .hero-left {
-    width: 100%;
-  }
-
-  .hero-right {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .hero-right .card {
-    width: 100%;
-  }
-
-  .hero-title {
-    font-size: 1.6rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.85rem;
-    max-width: 100%;
-  }
-
-  /* Cards: slightly tighter padding on mobile */
-  .card,
-  .card-light {
-    padding: 12px 12px 10px 12px;
-    border-radius: 16px;
-  }
-
-  .section-header {
-    font-size: 0.95rem;
-  }
-
-  .section-sub {
-    font-size: 0.75rem;
-  }
+/* =========================================
+   DATAFRAME CONTAINERS
+   ========================================= */
+.dataframe-wrap {
+    margin-top: 0.2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-/* Fundamental table wrapper */
 .fund-table-wrap {
     margin-top: 0.75rem;
-    border-radius: 14px;
-    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 10px;
+    border: 1px solid #E5E7EB;
     background: #ffffff;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    overflow-x: auto;        /* horizontal scroll on small screens */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
 }
 
-/* Keep table readable */
 .fund-table-wrap table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.8rem;
 }
 
-/* Optional: slightly smaller on mobile */
-@media (max-width: 768px) {
-  .fund-table-wrap table {
-    font-size: 0.72rem;
-  }
+
+/* =========================================
+   FUNDAMENTAL TABLE
+   ========================================= */
+.fundamental-table-container {
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    margin-top: 1rem;
+}
+
+.fundamental-table-container table {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 0.85rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.fundamental-table-container th {
+    background: #F9FAFB;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid #E5E7EB;
+    color: #374151;
+}
+
+.fundamental-table-container td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #F3F4F6;
+    color: #4B5563;
+}
+
+.fundamental-table-container tr:hover {
+    background: #F9FAFB !important;
 }
 
 
-/* Additional 25/12
-/* ----- Equal height columns (only affects layouts using columns) ----- */
-/* div[data-testid="column"] {
-  display: flex;
-  align-items: stretch; */
-/*}
-
-/* ----- A reusable "card wrapper" for Streamlit containers ----- */
-.card-wrap {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  padding: 14px 16px 10px 16px;
-  box-shadow: 0 8px 24px rgba(148, 163, 184, 0.18);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Make Plotly charts respect rounded corners inside card */
-.card-wrap .js-plotly-plot,
-.card-wrap iframe {
-  border-radius: 12px;
-}
-
-/* Optional: tighten Streamlit default vertical gaps inside cards */
-.card-wrap > div[data-testid="stVerticalBlock"] {
-  gap: 0.35rem;
+/* =========================================
+   DIVIDERS
+   ========================================= */
+hr {
+    border-color: #E5E7EB !important;
+    margin: 1.5rem 0 !important;
 }
 
 
-/* -------------------------------------------------
-   Compact bullet points (global)
--------------------------------------------------- */
-
+/* =========================================
+   BULLET LISTS
+   ========================================= */
 ul {
     margin-top: 0.15rem;
     margin-bottom: 0.15rem;
@@ -338,4 +445,53 @@ ul {
 ul li {
     margin-bottom: 0.25rem;
     line-height: 1.4;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+@media (max-width: 768px) {
+    .block-container {
+        padding-top: 0.8rem;
+        padding-bottom: 2rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        max-width: 100%;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .hero-left { width: 100%; }
+
+    .hero-right {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .hero-right .card { width: 100%; }
+
+    .hero-title { font-size: 1.4rem; }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+        max-width: 100%;
+    }
+
+    .card,
+    .card-light {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .section-header { font-size: 0.95rem; }
+    .section-sub { font-size: 0.75rem; }
+
+    .fund-table-wrap table { font-size: 0.72rem; }
 }

@@ -155,6 +155,41 @@ def get_screener_minervini(client: Optional[bigquery.Client] = None) -> pd.DataF
     return run_query(query, client=client)
 
 
+SECTOR_FLOW_7D_VS_30D_TABLE = os.getenv(
+    "BIGQUERY_SECTOR_FLOW_7D_VS_30D_TABLE",
+    "silver-ripple-355716.adl.v_sector_flow_7d_vs_30d",
+)
+
+STOCK_FLOW_7D_VS_30D_TABLE = os.getenv(
+    "BIGQUERY_STOCK_FLOW_7D_VS_30D_TABLE",
+    "silver-ripple-355716.adl.v_stock_flow_7d_vs_30d",
+)
+
+
+def get_sector_flow_7d_vs_30d(client: Optional[bigquery.Client] = None) -> pd.DataFrame:
+    """
+    Fetch sector flow 7d vs 30d comparison data from:
+      silver-ripple-355716.adl.v_sector_flow_7d_vs_30d
+    """
+    query = f"""
+        SELECT *
+        FROM `{SECTOR_FLOW_7D_VS_30D_TABLE}`
+    """
+    return run_query(query, client=client)
+
+
+def get_stock_flow_7d_vs_30d(client: Optional[bigquery.Client] = None) -> pd.DataFrame:
+    """
+    Fetch stock flow 7d vs 30d comparison data from:
+      silver-ripple-355716.adl.v_stock_flow_7d_vs_30d
+    """
+    query = f"""
+        SELECT *
+        FROM `{STOCK_FLOW_7D_VS_30D_TABLE}`
+    """
+    return run_query(query, client=client)
+
+
 # ---------------------------------------------------------------------
 # Your existing fundamentals helpers (kept as-is, but using run_query)
 # ---------------------------------------------------------------------
